@@ -8670,37 +8670,37 @@ const tech = {
                 if (this.count) m.look = m.lookDefault
             }
         },
-        {
-            name: "motion sickness",
-            description: `disable camera smoothing`,
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            // isNonRefundable: true,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                m.look = () => {
-                    //always on mouse look
-                    m.angle = Math.atan2(
-                        simulation.mouseInGame.y - m.pos.y,
-                        simulation.mouseInGame.x - m.pos.x
-                    );
-                    //smoothed mouse look translations
-                    const scale = 1.2;
-                    m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-                    m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
-                    m.transX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-                    m.transY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
-                    // m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
-                    // m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
-                }
-            },
-            remove() {
-                if (this.count) m.look = m.lookDefault
-            }
-        },
+//         {
+//             name: "motion sickness",
+//             description: `disable camera smoothing`,
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             // isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 m.look = () => {
+//                     //always on mouse look
+//                     m.angle = Math.atan2(
+//                         simulation.mouseInGame.y - m.pos.y,
+//                         simulation.mouseInGame.x - m.pos.x
+//                     );
+//                     //smoothed mouse look translations
+//                     const scale = 1.2;
+//                     m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+//                     m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+//                     m.transX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+//                     m.transY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+//                     // m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
+//                     // m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
+//                 }
+//             },
+//             remove() {
+//                 if (this.count) m.look = m.lookDefault
+//             }
+//         },
         {
             name: "facsimile",
             description: `inserts a copy of your current level into the level list`,
@@ -8717,126 +8717,126 @@ const tech = {
             },
             remove() {}
         },
-        {
-            name: "negative friction",
-            description: "when you touch walls you speed up instead of slowing down. It's kinda fun.",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                player.friction = -0.4
-            },
-            remove() {
-                if (this.count) player.friction = 0.002
-            }
-        },
-        {
-            name: "bounce",
-            description: "you bounce off things.  It's annoying, but not that bad.",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                player.restitution = 0.9
-            },
-            remove() {
-                if (this.count) player.restitution = 0
-            }
-        },
-        {
-            name: "mouth",
-            description: "mobs have a non functional mouth",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                mobs.draw = () => {
-                    ctx.lineWidth = 2;
-                    let i = mob.length;
-                    while (i--) {
-                        ctx.beginPath();
-                        const vertices = mob[i].vertices;
-                        ctx.moveTo(vertices[0].x, vertices[0].y);
-                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
-                        ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
-                        ctx.fillStyle = mob[i].fill;
-                        ctx.strokeStyle = mob[i].stroke;
-                        ctx.fill();
-                        ctx.stroke();
-                    }
-                }
-            },
-            remove() {
-                mobs.draw = () => {
-                    ctx.lineWidth = 2;
-                    let i = mob.length;
-                    while (i--) {
-                        ctx.beginPath();
-                        const vertices = mob[i].vertices;
-                        ctx.moveTo(vertices[0].x, vertices[0].y);
-                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
-                        ctx.lineTo(vertices[0].x, vertices[0].y);
-                        ctx.fillStyle = mob[i].fill;
-                        ctx.strokeStyle = mob[i].stroke;
-                        ctx.fill();
-                        ctx.stroke();
-                    }
-                }
-            }
-        },
-        {
-            name: "all-stars",
-            description: "make all mobs look like stars",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                mobs.draw = () => {
-                    ctx.lineWidth = 2;
-                    let i = mob.length;
-                    while (i--) {
-                        ctx.beginPath();
-                        const vertices = mob[i].vertices;
-                        ctx.moveTo(vertices[0].x, vertices[0].y);
-                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[j].x, vertices[j].y);
-                        ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
-                        ctx.fillStyle = mob[i].fill;
-                        ctx.strokeStyle = mob[i].stroke;
-                        ctx.fill();
-                        ctx.stroke();
-                    }
-                }
-            },
-            remove() {
-                mobs.draw = () => {
-                    ctx.lineWidth = 2;
-                    let i = mob.length;
-                    while (i--) {
-                        ctx.beginPath();
-                        const vertices = mob[i].vertices;
-                        ctx.moveTo(vertices[0].x, vertices[0].y);
-                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
-                        ctx.lineTo(vertices[0].x, vertices[0].y);
-                        ctx.fillStyle = mob[i].fill;
-                        ctx.strokeStyle = mob[i].stroke;
-                        ctx.fill();
-                        ctx.stroke();
-                    }
-                }
-            }
-        },
+//         {
+//             name: "negative friction",
+//             description: "when you touch walls you speed up instead of slowing down. It's kinda fun.",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 player.friction = -0.4
+//             },
+//             remove() {
+//                 if (this.count) player.friction = 0.002
+//             }
+//         },
+//         {
+//             name: "bounce",
+//             description: "you bounce off things.  It's annoying, but not that bad.",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 player.restitution = 0.9
+//             },
+//             remove() {
+//                 if (this.count) player.restitution = 0
+//             }
+//         },
+//         {
+//             name: "mouth",
+//             description: "mobs have a non functional mouth",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 mobs.draw = () => {
+//                     ctx.lineWidth = 2;
+//                     let i = mob.length;
+//                     while (i--) {
+//                         ctx.beginPath();
+//                         const vertices = mob[i].vertices;
+//                         ctx.moveTo(vertices[0].x, vertices[0].y);
+//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
+//                         ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
+//                         ctx.fillStyle = mob[i].fill;
+//                         ctx.strokeStyle = mob[i].stroke;
+//                         ctx.fill();
+//                         ctx.stroke();
+//                     }
+//                 }
+//             },
+//             remove() {
+//                 mobs.draw = () => {
+//                     ctx.lineWidth = 2;
+//                     let i = mob.length;
+//                     while (i--) {
+//                         ctx.beginPath();
+//                         const vertices = mob[i].vertices;
+//                         ctx.moveTo(vertices[0].x, vertices[0].y);
+//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
+//                         ctx.lineTo(vertices[0].x, vertices[0].y);
+//                         ctx.fillStyle = mob[i].fill;
+//                         ctx.strokeStyle = mob[i].stroke;
+//                         ctx.fill();
+//                         ctx.stroke();
+//                     }
+//                 }
+//             }
+//         },
+// //         {
+// //             name: "all-stars",
+//             description: "make all mobs look like stars",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 mobs.draw = () => {
+//                     ctx.lineWidth = 2;
+//                     let i = mob.length;
+//                     while (i--) {
+//                         ctx.beginPath();
+//                         const vertices = mob[i].vertices;
+//                         ctx.moveTo(vertices[0].x, vertices[0].y);
+//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[j].x, vertices[j].y);
+//                         ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
+//                         ctx.fillStyle = mob[i].fill;
+//                         ctx.strokeStyle = mob[i].stroke;
+//                         ctx.fill();
+//                         ctx.stroke();
+//                     }
+//                 }
+//             },
+//             remove() {
+//                 mobs.draw = () => {
+//                     ctx.lineWidth = 2;
+//                     let i = mob.length;
+//                     while (i--) {
+//                         ctx.beginPath();
+//                         const vertices = mob[i].vertices;
+//                         ctx.moveTo(vertices[0].x, vertices[0].y);
+//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
+//                         ctx.lineTo(vertices[0].x, vertices[0].y);
+//                         ctx.fillStyle = mob[i].fill;
+//                         ctx.strokeStyle = mob[i].stroke;
+//                         ctx.fill();
+//                         ctx.stroke();
+//                     }
+//                 }
+//             }
+//         },
         // draw() {
         //     ctx.lineWidth = 2;
         //     let i = mob.length;
@@ -8852,269 +8852,269 @@ const tech = {
         //         ctx.stroke();
         //     }
         // },
-        {
-            name: "true colors",
-            description: `set all power ups to their real world colors`,
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isJunk: true,
-            isNonRefundable: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                // const colors = shuffle(["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"])
-                const colors = shuffle([powerUps.research.color, powerUps.heal.color, powerUps.ammo.color, powerUps.ammo.color, powerUps.field.color, powerUps.gun.color])
-                powerUps.research.color = colors[0]
-                powerUps.heal.color = colors[1]
-                powerUps.ammo.color = colors[2]
-                powerUps.field.color = colors[3]
-                powerUps.tech.color = colors[4]
-                powerUps.gun.color = colors[5]
-                for (let i = 0; i < powerUp.length; i++) {
-                    switch (powerUp[i].name) {
-                        case "research":
-                            powerUp[i].color = colors[0]
-                            break;
-                        case "heal":
-                            powerUp[i].color = colors[1]
-                            break;
-                        case "ammo":
-                            powerUp[i].color = colors[2]
-                            break;
-                        case "field":
-                            powerUp[i].color = colors[3]
-                            break;
-                        case "tech":
-                            powerUp[i].color = colors[4]
-                            break;
-                        case "gun":
-                            powerUp[i].color = colors[5]
-                            break;
-                    }
-                }
-            },
-            remove() {
-                // const colors = ["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"] //no shuffle
-                // powerUps.research.color = colors[0]
-                // powerUps.heal.color = colors[1]
-                // powerUps.ammo.color = colors[2]
-                // powerUps.field.color = colors[3]
-                // powerUps.tech.color = colors[4]
-                // powerUps.gun.color = colors[5]
-                // for (let i = 0; i < powerUp.length; i++) {
-                //     switch (powerUp[i].name) {
-                //         case "research":
-                //             powerUp[i].color = colors[0]
-                //             break;
-                //         case "heal":
-                //             powerUp[i].color = colors[1]
-                //             break;
-                //         case "ammo":
-                //             powerUp[i].color = colors[2]
-                //             break;
-                //         case "field":
-                //             powerUp[i].color = colors[3]
-                //             break;
-                //         case "tech":
-                //             powerUp[i].color = colors[4]
-                //             break;
-                //         case "gun":
-                //             powerUp[i].color = colors[5]
-                //             break;
-                //     }
-                // }
-            }
-        },
-        {
-            name: "emergency broadcasting",
-            description: "emit 2 sine waveforms at 853 Hz and 960 Hz<br><em>lower your volume</em>",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isJunk: true,
-            isNonRefundable: true,
-            allowed() { return true },
-            requires: "",
-            effect: () => {
-                //setup audio context
-                function tone(frequency) {
-                    const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-                    const oscillator1 = audioCtx.createOscillator();
-                    const gainNode1 = audioCtx.createGain();
-                    gainNode1.gain.value = 0.5; //controls volume
-                    oscillator1.connect(gainNode1);
-                    gainNode1.connect(audioCtx.destination);
-                    oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
-                    oscillator1.frequency.value = frequency; // value in hertz
-                    oscillator1.start();
-                    return audioCtx
-                }
-                // let sound = tone(1050)
+//         {
+//             name: "true colors",
+//             description: `set all power ups to their real world colors`,
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isJunk: true,
+//             isNonRefundable: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 // const colors = shuffle(["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"])
+//                 const colors = shuffle([powerUps.research.color, powerUps.heal.color, powerUps.ammo.color, powerUps.ammo.color, powerUps.field.color, powerUps.gun.color])
+//                 powerUps.research.color = colors[0]
+//                 powerUps.heal.color = colors[1]
+//                 powerUps.ammo.color = colors[2]
+//                 powerUps.field.color = colors[3]
+//                 powerUps.tech.color = colors[4]
+//                 powerUps.gun.color = colors[5]
+//                 for (let i = 0; i < powerUp.length; i++) {
+//                     switch (powerUp[i].name) {
+//                         case "research":
+//                             powerUp[i].color = colors[0]
+//                             break;
+//                         case "heal":
+//                             powerUp[i].color = colors[1]
+//                             break;
+//                         case "ammo":
+//                             powerUp[i].color = colors[2]
+//                             break;
+//                         case "field":
+//                             powerUp[i].color = colors[3]
+//                             break;
+//                         case "tech":
+//                             powerUp[i].color = colors[4]
+//                             break;
+//                         case "gun":
+//                             powerUp[i].color = colors[5]
+//                             break;
+//                     }
+//                 }
+//             },
+//             remove() {
+//                 // const colors = ["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"] //no shuffle
+//                 // powerUps.research.color = colors[0]
+//                 // powerUps.heal.color = colors[1]
+//                 // powerUps.ammo.color = colors[2]
+//                 // powerUps.field.color = colors[3]
+//                 // powerUps.tech.color = colors[4]
+//                 // powerUps.gun.color = colors[5]
+//                 // for (let i = 0; i < powerUp.length; i++) {
+//                 //     switch (powerUp[i].name) {
+//                 //         case "research":
+//                 //             powerUp[i].color = colors[0]
+//                 //             break;
+//                 //         case "heal":
+//                 //             powerUp[i].color = colors[1]
+//                 //             break;
+//                 //         case "ammo":
+//                 //             powerUp[i].color = colors[2]
+//                 //             break;
+//                 //         case "field":
+//                 //             powerUp[i].color = colors[3]
+//                 //             break;
+//                 //         case "tech":
+//                 //             powerUp[i].color = colors[4]
+//                 //             break;
+//                 //         case "gun":
+//                 //             powerUp[i].color = colors[5]
+//                 //             break;
+//                 //     }
+//                 // }
+//             }
+//         },
+//         {
+//             name: "emergency broadcasting",
+//             description: "emit 2 sine waveforms at 853 Hz and 960 Hz<br><em>lower your volume</em>",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isJunk: true,
+//             isNonRefundable: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect: () => {
+//                 //setup audio context
+//                 function tone(frequency) {
+//                     const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+//                     const oscillator1 = audioCtx.createOscillator();
+//                     const gainNode1 = audioCtx.createGain();
+//                     gainNode1.gain.value = 0.5; //controls volume
+//                     oscillator1.connect(gainNode1);
+//                     gainNode1.connect(audioCtx.destination);
+//                     oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
+//                     oscillator1.frequency.value = frequency; // value in hertz
+//                     oscillator1.start();
+//                     return audioCtx
+//                 }
+//                 // let sound = tone(1050)
 
-                function EBS() {
-                    const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+//                 function EBS() {
+//                     const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
-                    const oscillator1 = audioCtx.createOscillator();
-                    const gainNode1 = audioCtx.createGain();
-                    gainNode1.gain.value = 0.3; //controls volume
-                    oscillator1.connect(gainNode1);
-                    gainNode1.connect(audioCtx.destination);
-                    oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
-                    oscillator1.frequency.value = 850; // value in hertz
-                    oscillator1.start();
+//                     const oscillator1 = audioCtx.createOscillator();
+//                     const gainNode1 = audioCtx.createGain();
+//                     gainNode1.gain.value = 0.3; //controls volume
+//                     oscillator1.connect(gainNode1);
+//                     gainNode1.connect(audioCtx.destination);
+//                     oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
+//                     oscillator1.frequency.value = 850; // value in hertz
+//                     oscillator1.start();
 
-                    const oscillator2 = audioCtx.createOscillator();
-                    const gainNode2 = audioCtx.createGain();
-                    gainNode2.gain.value = 0.3; //controls volume
-                    oscillator2.connect(gainNode2);
-                    gainNode2.connect(audioCtx.destination);
-                    oscillator2.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
-                    oscillator2.frequency.value = 957; // value in hertz
-                    oscillator2.start();
-                    return audioCtx
-                }
-                let sound = EBS()
+//                     const oscillator2 = audioCtx.createOscillator();
+//                     const gainNode2 = audioCtx.createGain();
+//                     gainNode2.gain.value = 0.3; //controls volume
+//                     oscillator2.connect(gainNode2);
+//                     gainNode2.connect(audioCtx.destination);
+//                     oscillator2.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
+//                     oscillator2.frequency.value = 957; // value in hertz
+//                     oscillator2.start();
+//                     return audioCtx
+//                 }
+//                 let sound = EBS()
 
-                delay = 1000
-                setTimeout(() => {
-                    sound.suspend()
-                    powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-                    setTimeout(() => {
-                        sound.resume()
-                        setTimeout(() => {
-                            sound.suspend()
-                            powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-                            setTimeout(() => {
-                                sound.resume()
-                                setTimeout(() => {
-                                    sound.suspend()
-                                    powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-                                    setTimeout(() => {
-                                        sound.resume()
-                                        setTimeout(() => {
-                                            sound.suspend()
-                                            powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-                                            setTimeout(() => {
-                                                sound.resume()
-                                                setTimeout(() => {
-                                                    sound.suspend()
-                                                    powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-                                                    setTimeout(() => {
-                                                        sound.resume()
-                                                        setTimeout(() => {
-                                                            sound.suspend()
-                                                            sound.close()
-                                                            powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-                                                        }, delay);
-                                                    }, delay);
-                                                }, delay);
-                                            }, delay);
-                                        }, delay);
-                                    }, delay);
-                                }, delay);
-                            }, delay);
-                        }, delay);
-                    }, delay);
-                }, delay);
-            },
-            remove() {}
-        },
-        {
-            name: "automatic",
-            description: "you can't fire when moving<br>always <strong>fire</strong> when at <strong>rest</strong>",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isJunk: true,
-            allowed() {
-                return !tech.isFireMoveLock
-            },
-            requires: "not Higgs mechanism",
-            effect() {
-                tech.isAlwaysFire = true;
-                b.setFireMethod();
-            },
-            remove() {
-                if (tech.isAlwaysFire) {
-                    tech.isAlwaysFire = false
-                    b.setFireMethod();
-                }
-            }
-        },
-        {
-            name: "hidden variable",
-            descriptionFunction() {
-                return `spawn ${powerUps.orb.heal(20)}<br>but hide your <strong class='color-h'>health</strong> bar`
-            },
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                document.getElementById("health").style.display = "none"
-                document.getElementById("health-bg").style.display = "none"
-                for (let i = 0; i < 20; i++) powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-            },
-            remove() {}
-        },
-        {
-            name: "not a bug",
-            description: "initiate a totally safe game crash for 10 seconds",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                const savedfunction = simulation.drawCircle
-                simulation.drawCircle = () => {
-                    const a = mob[Infinity].position //crashed the game in a visually interesting way, because of the ctx.translate command is never reverted in the main game loop
-                }
-                setTimeout(() => {
-                    simulation.drawCircle = savedfunction
-                    canvas.width = canvas.width //clears the canvas // works on chrome at least
-                    powerUps.spawn(m.pos.x, m.pos.y, "tech");
-                }, 10000);
+//                 delay = 1000
+//                 setTimeout(() => {
+//                     sound.suspend()
+//                     powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+//                     setTimeout(() => {
+//                         sound.resume()
+//                         setTimeout(() => {
+//                             sound.suspend()
+//                             powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+//                             setTimeout(() => {
+//                                 sound.resume()
+//                                 setTimeout(() => {
+//                                     sound.suspend()
+//                                     powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+//                                     setTimeout(() => {
+//                                         sound.resume()
+//                                         setTimeout(() => {
+//                                             sound.suspend()
+//                                             powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+//                                             setTimeout(() => {
+//                                                 sound.resume()
+//                                                 setTimeout(() => {
+//                                                     sound.suspend()
+//                                                     powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+//                                                     setTimeout(() => {
+//                                                         sound.resume()
+//                                                         setTimeout(() => {
+//                                                             sound.suspend()
+//                                                             sound.close()
+//                                                             powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+//                                                         }, delay);
+//                                                     }, delay);
+//                                                 }, delay);
+//                                             }, delay);
+//                                         }, delay);
+//                                     }, delay);
+//                                 }, delay);
+//                             }, delay);
+//                         }, delay);
+//                     }, delay);
+//                 }, delay);
+//             },
+//             remove() {}
+//         },
+//         {
+//             name: "automatic",
+//             description: "you can't fire when moving<br>always <strong>fire</strong> when at <strong>rest</strong>",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isJunk: true,
+//             allowed() {
+//                 return !tech.isFireMoveLock
+//             },
+//             requires: "not Higgs mechanism",
+//             effect() {
+//                 tech.isAlwaysFire = true;
+//                 b.setFireMethod();
+//             },
+//             remove() {
+//                 if (tech.isAlwaysFire) {
+//                     tech.isAlwaysFire = false
+//                     b.setFireMethod();
+//                 }
+//             }
+//         },
+//         {
+//             name: "hidden variable",
+//             descriptionFunction() {
+//                 return `spawn ${powerUps.orb.heal(20)}<br>but hide your <strong class='color-h'>health</strong> bar`
+//             },
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 document.getElementById("health").style.display = "none"
+//                 document.getElementById("health-bg").style.display = "none"
+//                 for (let i = 0; i < 20; i++) powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+//             },
+//             remove() {}
+//         },
+//         {
+//             name: "not a bug",
+//             description: "initiate a totally safe game crash for 10 seconds",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 const savedfunction = simulation.drawCircle
+//                 simulation.drawCircle = () => {
+//                     const a = mob[Infinity].position //crashed the game in a visually interesting way, because of the ctx.translate command is never reverted in the main game loop
+//                 }
+//                 setTimeout(() => {
+//                     simulation.drawCircle = savedfunction
+//                     canvas.width = canvas.width //clears the canvas // works on chrome at least
+//                     powerUps.spawn(m.pos.x, m.pos.y, "tech");
+//                 }, 10000);
 
-                // for (;;) {} //freezes the tab
-            },
-            remove() {}
-        },
-        {
-            name: "spinor",
-            description: "the direction you aim is determined by your position",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() {
-                return !m.isShipMode
-            },
-            requires: "",
-            effect() {
-                m.look = function() {
-                    //always on mouse look
-                    m.angle = (((m.pos.x + m.pos.y) / 100 + Math.PI) % Math.PI * 2) - Math.PI
-                    //smoothed mouse look translations
-                    const scale = 0.8;
-                    m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-                    m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+//                 // for (;;) {} //freezes the tab
+//             },
+//             remove() {}
+//         },
+//         {
+//             name: "spinor",
+//             description: "the direction you aim is determined by your position",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() {
+//                 return !m.isShipMode
+//             },
+//             requires: "",
+//             effect() {
+//                 m.look = function() {
+//                     //always on mouse look
+//                     m.angle = (((m.pos.x + m.pos.y) / 100 + Math.PI) % Math.PI * 2) - Math.PI
+//                     //smoothed mouse look translations
+//                     const scale = 0.8;
+//                     m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+//                     m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
 
-                    m.transX += (m.transSmoothX - m.transX) * 0.07;
-                    m.transY += (m.transSmoothY - m.transY) * 0.07;
-                }
-            },
-            remove() {
-                if (this.count) m.look = m.lookDefault
-            }
-        },
+//                     m.transX += (m.transSmoothX - m.transX) * 0.07;
+//                     m.transY += (m.transSmoothY - m.transY) * 0.07;
+//                 }
+//             },
+//             remove() {
+//                 if (this.count) m.look = m.lookDefault
+//             }
+//         },
         {
             name: "decomposers",
             description: "after they die <strong>mobs</strong> leave behind <strong>spawns</strong>",
@@ -9134,28 +9134,28 @@ const tech = {
                 tech.deathSpawns = 0
             }
         },
-        {
-            name: "panopticon",
-            description: "<strong>mobs</strong> can always see you",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                setInterval(() => {
-                    for (let i = 0; i < mob.length; i++) {
-                        if (!mob[i].shield && mob[i].isDropPowerUp) {
-                            mob[i].locatePlayer()
-                            mob[i].seePlayer.yes = true;
-                        }
-                    }
-                }, 1000); //every 1 seconds
-            },
-            remove() {}
-        },
+//         {
+//             name: "panopticon",
+//             description: "<strong>mobs</strong> can always see you",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 setInterval(() => {
+//                     for (let i = 0; i < mob.length; i++) {
+//                         if (!mob[i].shield && mob[i].isDropPowerUp) {
+//                             mob[i].locatePlayer()
+//                             mob[i].seePlayer.yes = true;
+//                         }
+//                     }
+//                 }, 1000); //every 1 seconds
+//             },
+//             remove() {}
+//         },
         // {
         //     name: "inverted mouse",
         //     description: "your mouse is scrambled<br>it's fine, just rotate it 90 degrees",
@@ -9440,37 +9440,37 @@ const tech = {
         //     },
         //     remove() {}
         // },
-        {
-            name: "pitch",
-            description: "oscillate the pitch of your world",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                setInterval(() => { if (!simulation.paused) ctx.rotate(0.001 * Math.sin(simulation.cycle * 0.01)) }, 16);
-            },
-            remove() {}
-        },
-        {
-            name: "umbra",
-            description: "produce a blue glow around everything<br>and probably some simulation lag",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                ctx.shadowColor = '#06f';
-                ctx.shadowBlur = 25;
-            },
-            remove() {}
-        },
+//         {
+//             name: "pitch",
+//             description: "oscillate the pitch of your world",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 setInterval(() => { if (!simulation.paused) ctx.rotate(0.001 * Math.sin(simulation.cycle * 0.01)) }, 16);
+//             },
+//             remove() {}
+//         },
+//         {
+//             name: "umbra",
+//             description: "produce a blue glow around everything<br>and probably some simulation lag",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 ctx.shadowColor = '#06f';
+//                 ctx.shadowBlur = 25;
+//             },
+//             remove() {}
+//         },
         {
             name: "lighter",
             description: `ctx.globalCompositeOperation = "lighter"`,
@@ -10055,34 +10055,34 @@ const tech = {
 //             },
 //             remove() {}
 //         },
-        {
-            name: "circular symmetry",
-            description: "turning the ship rotates the universe instead<br><strong>+200%</strong> <strong class='color-d'>damage</strong>",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() { return m.isShipMode },
-            requires: "",
-            effect() {
-                tech.damage *= 2
+//         {
+//             name: "circular symmetry",
+//             description: "turning the ship rotates the universe instead<br><strong>+200%</strong> <strong class='color-d'>damage</strong>",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return m.isShipMode },
+//             requires: "",
+//             effect() {
+//                 tech.damage *= 2
 
-                m.look = () => {
-                    // const scale = 0;
-                    m.transSmoothX = canvas.width2 - m.pos.x // - (simulation.mouse.x - canvas.width2) * scale;
-                    m.transSmoothY = canvas.height2 - m.pos.y // - (simulation.mouse.y - canvas.height2) * scale;
-                    m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
-                    m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
-                    ctx.restore();
-                    ctx.save();
-                    ctx.translate(canvas.width2, canvas.height2); //center
-                    ctx.rotate(-m.angle)
-                    ctx.translate(-canvas.width2, -canvas.height2); //center
-                }
-            },
-            remove() {}
-        },
+//                 m.look = () => {
+//                     // const scale = 0;
+//                     m.transSmoothX = canvas.width2 - m.pos.x // - (simulation.mouse.x - canvas.width2) * scale;
+//                     m.transSmoothY = canvas.height2 - m.pos.y // - (simulation.mouse.y - canvas.height2) * scale;
+//                     m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
+//                     m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
+//                     ctx.restore();
+//                     ctx.save();
+//                     ctx.translate(canvas.width2, canvas.height2); //center
+//                     ctx.rotate(-m.angle)
+//                     ctx.translate(-canvas.width2, -canvas.height2); //center
+//                 }
+//             },
+//             remove() {}
+//         },
         {
             name: "assimilation",
             description: "all your <strong class='color-bot'>bots</strong> are converted to the <strong>same</strong> random model",
