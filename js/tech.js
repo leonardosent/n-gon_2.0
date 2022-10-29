@@ -10553,8 +10553,8 @@ const tech = {
         //************************************************** tech
         //************************************************** 
         {
-            name: `\0`,
-            description: `<strong class="">A special key that tells the computer when to end string.</strong>`,
+            name: `undefined`,
+            description: `<strong class="">A placeholder for unassigned variables</strong>`,
             maxCount: 1,
             count: 0,
             frequency: 2,
@@ -10608,7 +10608,7 @@ const tech = {
             remove() {
                 lore.techCount = 0;
                 this.maxCount = lore.techGoal;
-                this.description = `<strong class="lore-text">A special key that tells the computer when to end string.</strong>`
+                this.description = `<strong class="lore-text">A placeholder for unassigned variables</strong>`
             }
         }
     ],
