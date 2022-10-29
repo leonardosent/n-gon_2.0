@@ -7864,27 +7864,27 @@ const tech = {
                 b.setFireCD();
             }
         },
-//         {
-//             name: "WIMPs",
-//             description: `at the end of each <strong>level</strong> spawn ${powerUps.orb.research(4)}<br> and a dangerous particle that slowly <strong>chases</strong> you`,
-//             isFieldTech: true,
-//             maxCount: 9,
-//             count: 0,
-//             frequency: 2,
-//             frequencyDefault: 2,
-//             allowed() {
-//                 return m.fieldUpgrades[m.fieldMode].name === "wormhole" || m.fieldUpgrades[m.fieldMode].name === "pilot wave" || m.fieldUpgrades[m.fieldMode].name === "time dilation"
-//             },
-//             requires: "wormhole, pilot wave, time dilation",
-//             effect() {
-//                 tech.wimpCount++
-//                 spawn.WIMP()
-//                 for (let j = 0, len = 4; j < len; j++) powerUps.spawn(level.exit.x + 100 * (Math.random() - 0.5), level.exit.y - 100 + 100 * (Math.random() - 0.5), "research", false)
-//             },
-//             remove() {
-//                 tech.wimpCount = 0
-//             }
-//         },
+        {
+            name: "WIMPs",
+            description: `at the end of each <strong>level</strong> spawn ${powerUps.orb.research(4)}<br> and a dangerous particle that slowly <strong>chases</strong> you`,
+            isFieldTech: true,
+            maxCount: 9,
+            count: 0,
+            frequency: 2,
+            frequencyDefault: 2,
+            allowed() {
+                return m.fieldUpgrades[m.fieldMode].name === "wormhole" || m.fieldUpgrades[m.fieldMode].name === "pilot wave" || m.fieldUpgrades[m.fieldMode].name === "time dilation"
+            },
+            requires: "wormhole, pilot wave, time dilation",
+            effect() {
+                tech.wimpCount++
+                spawn.WIMP()
+                for (let j = 0, len = 4; j < len; j++) powerUps.spawn(level.exit.x + 100 * (Math.random() - 0.5), level.exit.y - 100 + 100 * (Math.random() - 0.5), "research", false)
+            },
+            remove() {
+                tech.wimpCount = 0
+            }
+        },
         {
             name: "vacuum fluctuation",
             description: `use ${powerUps.orb.research(6)}to exploit your <strong class='color-f'>field</strong> for a<br><strong>+11%</strong> chance to <strong class='color-dup'>duplicate</strong> spawned <strong>power ups</strong>`,
@@ -8327,70 +8327,70 @@ const tech = {
             },
             remove() {}
         },
-//         {
-//             name: "panpsychism",
-//             description: "awaken all <strong class='color-block'>blocks</strong><br><strong class='color-block'>blocks</strong> have a chance to spawn power ups",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             isNonRefundable: true,
-//             allowed: () => true,
-//             requires: "",
-//             effect() {
-//                 setInterval(() => {
-//                     for (let i = body.length - 1; i > -1; i--) {
-//                         if (!body[i].isNotHoldable) {
-//                             Matter.Composite.remove(engine.world, body[i]);
-//                             spawn.blockMob(body[i].position.x, body[i].position.y, body[i], 0);
-//                             if (!body[i].isAboutToBeRemoved) mob[mob.length - 1].isDropPowerUp = true
-//                             body.splice(i, 1);
-//                         }
-//                     }
-//                 }, 6000);
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "meteor shower",
-//             description: "take a shower, but meteors instead of water",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             isNonRefundable: true,
-//             allowed: () => true,
-//             requires: "",
-//             effect() {
-//                 setInterval(() => {
+        {
+            name: "panpsychism",
+            description: "awaken all <strong class='color-block'>blocks</strong><br><strong class='color-block'>blocks</strong> have a chance to spawn power ups",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            isNonRefundable: true,
+            allowed: () => true,
+            requires: "",
+            effect() {
+                setInterval(() => {
+                    for (let i = body.length - 1; i > -1; i--) {
+                        if (!body[i].isNotHoldable) {
+                            Matter.Composite.remove(engine.world, body[i]);
+                            spawn.blockMob(body[i].position.x, body[i].position.y, body[i], 0);
+                            if (!body[i].isAboutToBeRemoved) mob[mob.length - 1].isDropPowerUp = true
+                            body.splice(i, 1);
+                        }
+                    }
+                }, 6000);
+            },
+            remove() {}
+        },
+        {
+            name: "meteor shower",
+            description: "take a shower, but meteors instead of water",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            isNonRefundable: true,
+            allowed: () => true,
+            requires: "",
+            effect() {
+                setInterval(() => {
 
-//                     fireBlock = function(xPos, yPos) {
-//                         const index = body.length
-//                         spawn.bodyRect(xPos, yPos, 20 + 50 * Math.random(), 20 + 50 * Math.random());
-//                         const bodyBullet = body[index]
-//                         Matter.Body.setVelocity(bodyBullet, { x: 5 * (Math.random() - 0.5), y: 10 * (Math.random() - 0.5) });
-//                         bodyBullet.isAboutToBeRemoved = true
-//                         bodyBullet.collisionFilter.category = cat.body;
-//                         bodyBullet.collisionFilter.mask = cat.player | cat.map | cat.body | cat.bullet | cat.mob | cat.mobBullet
-//                         bodyBullet.classType = "body";
-//                         Composite.add(engine.world, bodyBullet); //add to world
-//                         setTimeout(() => { //remove block
-//                             for (let i = 0; i < body.length; i++) {
-//                                 if (body[i] === bodyBullet) {
-//                                     Matter.Composite.remove(engine.world, body[i]);
-//                                     body.splice(i, 1);
-//                                 }
-//                             }
-//                         }, 4000 + Math.floor(9000 * Math.random()));
-//                     }
-//                     fireBlock(player.position.x + 600 * (Math.random() - 0.5), player.position.y - 500 - 500 * Math.random());
-//                     // for (let i = 0, len =  Math.random(); i < len; i++) {
-//                     // }
+                    fireBlock = function(xPos, yPos) {
+                        const index = body.length
+                        spawn.bodyRect(xPos, yPos, 20 + 50 * Math.random(), 20 + 50 * Math.random());
+                        const bodyBullet = body[index]
+                        Matter.Body.setVelocity(bodyBullet, { x: 5 * (Math.random() - 0.5), y: 10 * (Math.random() - 0.5) });
+                        bodyBullet.isAboutToBeRemoved = true
+                        bodyBullet.collisionFilter.category = cat.body;
+                        bodyBullet.collisionFilter.mask = cat.player | cat.map | cat.body | cat.bullet | cat.mob | cat.mobBullet
+                        bodyBullet.classType = "body";
+                        Composite.add(engine.world, bodyBullet); //add to world
+                        setTimeout(() => { //remove block
+                            for (let i = 0; i < body.length; i++) {
+                                if (body[i] === bodyBullet) {
+                                    Matter.Composite.remove(engine.world, body[i]);
+                                    body.splice(i, 1);
+                                }
+                            }
+                        }, 4000 + Math.floor(9000 * Math.random()));
+                    }
+                    fireBlock(player.position.x + 600 * (Math.random() - 0.5), player.position.y - 500 - 500 * Math.random());
+                    // for (let i = 0, len =  Math.random(); i < len; i++) {
+                    // }
 
-//                 }, 1000);
-//             },
-//             remove() {}
-//         },
+                }, 1000);
+            },
+            remove() {}
+        },
         {
             name: "startle response",
             description: `if a threat is nearby, activate a ${powerUps.orb.boost(1)}<br>and lock your mouse until you press escape`,
@@ -8670,37 +8670,37 @@ const tech = {
                 if (this.count) m.look = m.lookDefault
             }
         },
-//         {
-//             name: "motion sickness",
-//             description: `disable camera smoothing`,
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             // isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 m.look = () => {
-//                     //always on mouse look
-//                     m.angle = Math.atan2(
-//                         simulation.mouseInGame.y - m.pos.y,
-//                         simulation.mouseInGame.x - m.pos.x
-//                     );
-//                     //smoothed mouse look translations
-//                     const scale = 1.2;
-//                     m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-//                     m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
-//                     m.transX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-//                     m.transY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
-//                     // m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
-//                     // m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
-//                 }
-//             },
-//             remove() {
-//                 if (this.count) m.look = m.lookDefault
-//             }
-//         },
+        {
+            name: "motion sickness",
+            description: `disable camera smoothing`,
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            // isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                m.look = () => {
+                    //always on mouse look
+                    m.angle = Math.atan2(
+                        simulation.mouseInGame.y - m.pos.y,
+                        simulation.mouseInGame.x - m.pos.x
+                    );
+                    //smoothed mouse look translations
+                    const scale = 1.2;
+                    m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+                    m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+                    m.transX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+                    m.transY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+                    // m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
+                    // m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
+                }
+            },
+            remove() {
+                if (this.count) m.look = m.lookDefault
+            }
+        },
         {
             name: "facsimile",
             description: `inserts a copy of your current level into the level list`,
@@ -8717,64 +8717,64 @@ const tech = {
             },
             remove() {}
         },
-//         {
-//             name: "negative friction",
-//             description: "when you touch walls you speed up instead of slowing down. It's kinda fun.",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 player.friction = -0.4
-//             },
-//             remove() {
-//                 if (this.count) player.friction = 0.002
-//             }
-//         },
-//         {
-//             name: "bounce",
-//             description: "you bounce off things.  It's annoying, but not that bad.",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 player.restitution = 0.9
-//             },
-//             remove() {
-//                 if (this.count) player.restitution = 0
-//             }
-//         },
-//         {
-//             name: "mouth",
-//             description: "mobs have a non functional mouth",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 mobs.draw = () => {
-//                     ctx.lineWidth = 2;
-//                     let i = mob.length;
-//                     while (i--) {
-//                         ctx.beginPath();
-//                         const vertices = mob[i].vertices;
-//                         ctx.moveTo(vertices[0].x, vertices[0].y);
-//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
-//                         ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
-//                         ctx.fillStyle = mob[i].fill;
-//                         ctx.strokeStyle = mob[i].stroke;
-//                         ctx.fill();
-//                         ctx.stroke();
-//                     }
-//                 }
-//             },
+        {
+            name: "negative friction",
+            description: "when you touch walls you speed up instead of slowing down. It's kinda fun.",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                player.friction = -0.4
+            },
+            remove() {
+                if (this.count) player.friction = 0.002
+            }
+        },
+        {
+            name: "bounce",
+            description: "you bounce off things.  It's annoying, but not that bad.",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                player.restitution = 0.9
+            },
+            remove() {
+                if (this.count) player.restitution = 0
+            }
+        },
+        {
+            name: "mouth",
+            description: "mobs have a non functional mouth",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                mobs.draw = () => {
+                    ctx.lineWidth = 2;
+                    let i = mob.length;
+                    while (i--) {
+                        ctx.beginPath();
+                        const vertices = mob[i].vertices;
+                        ctx.moveTo(vertices[0].x, vertices[0].y);
+                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
+                        ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
+                        ctx.fillStyle = mob[i].fill;
+                        ctx.strokeStyle = mob[i].stroke;
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                }
+            },
             remove() {
                 mobs.draw = () => {
                     ctx.lineWidth = 2;
@@ -9455,22 +9455,22 @@ const tech = {
             },
             remove() {}
         },
-//         {
-//             name: "umbra",
-//             description: "produce a blue glow around everything<br>and probably some simulation lag",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 ctx.shadowColor = '#06f';
-//                 ctx.shadowBlur = 25;
-//             },
-//             remove() {}
-//         },
+        {
+            name: "umbra",
+            description: "produce a blue glow around everything<br>and probably some simulation lag",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                ctx.shadowColor = '#06f';
+                ctx.shadowBlur = 25;
+            },
+            remove() {}
+        },
         {
             name: "lighter",
             description: `ctx.globalCompositeOperation = "lighter"`,
