@@ -324,6 +324,27 @@ const tech = {
             }
         },
         {
+            name: "eletrical rewiring",
+            description: "-15% health for +30% speed, +10% jump",
+            maxCount: 9,
+            count: 0,
+            frequency: 1,
+            frequencyDefault: 1,
+            allowed() { return true },
+            requires: "",
+            effect() { // good with melee builds, content skipping builds
+                tech.squirrelFx += 0.30;
+                tech.squirrelJump += 0.1;
+                m.setMovement()
+                m.health -= ((0.15/m.health) * 100%
+            },
+            remove() {
+                tech.squirrelFx = 1;
+                tech.squirrelJump = 1;
+                m.setMovement()
+            }
+        },
+        {
             name: "ad hoc",
             descriptionFunction() {
                 return `spawn a ${powerUps.orb.heal()}, ${powerUps.orb.research(1)}, ${powerUps.orb.ammo(1)}, <strong class='color-f'>field</strong>, <strong class='color-g'>gun</strong>, or <strong class='color-m'>tech</strong><br>for each of your <strong class='color-g'>guns</strong>`
@@ -7145,7 +7166,7 @@ const tech = {
             effect() {
                 tech.isFlyFaster = true
             },
-            remove() {
+            remove()
                 tech.isFlyFaster = false;
             }
         },
