@@ -10553,8 +10553,8 @@ const tech = {
         //************************************************** tech
         //************************************************** 
         {
-            name: `undefined`,
-            description: `<strong class="lore-text">this</strong>`,
+            name: `nil`,
+            description: `<strong class="lore-text">lua unassined error</strong>`,
             maxCount: 1,
             count: 0,
             frequency: 2,
