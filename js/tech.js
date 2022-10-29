@@ -10553,8 +10553,8 @@ const tech = {
         //************************************************** tech
         //************************************************** 
         {
-            name: `nil`,
-            description: `<strong class="lore-text">lua unassined error</strong>`,
+            name: `\0`,
+            description: `<strong class="">A special key that tells the computer when to end string.</strong>`,
             maxCount: 1,
             count: 0,
             frequency: 2,
@@ -10562,7 +10562,7 @@ const tech = {
             isLore: true,
             // isExperimentHide: true,
             allowed() { return !build.isExperimentSelection },
-            requires: "NOT EXPERIMENT MODE",
+//             requires: "NOT EXPERIMENT MODE",
             effect() {
                 if (localSettings.loreCount > lore.conversation.length - 1) { //reward for people done with lore chapters (or on the final chapter)
                     for (let i = mob.length - 1; i > -1; i--) { //replace mobs with starters
@@ -10608,7 +10608,7 @@ const tech = {
             remove() {
                 lore.techCount = 0;
                 this.maxCount = lore.techGoal;
-                this.description = `<strong class="lore-text">this</strong>`
+                this.description = `<strong class="lore-text">A special key that tells the computer when to end string.</strong>`
             }
         }
     ],
