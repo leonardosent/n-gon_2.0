@@ -57,26 +57,26 @@
                         <option value="6">why?</option>
                     </select>
                     <br>
-                    <label for="fps-select" title="use this to slow the game down">limit frames per second:</label>
+                    <label for="fps-select" title="Use this to slow the game down">Limit frames per second:</label>
                     <select name="fps-select" id="fps-select">
-                        <option value="max" selected>no cap</option>
+                        <option value="max" selected>No limit</option>
                         <option value="72">72 fps</option>
                         <option value="60">60 fps</option>
                         <option value="45">45 fps</option>
                         <option value="30">30 fps</option>
                     </select>
                     <br>
-                    <label for="seed" title="the randoms seed determines level order, tech choices, and mob types">randomization seed:</label>
+                    <label for="seed" title="The randoms seed determines level order, tech choices, and mob types">Randomization seed:</label>
                     <input type="text" id="seed" name="seed" autocomplete="off" spellcheck="false" minlength="1" style="width: 120px;">
                     <br>
                     <span id="previous-seed" style="color:#bbb"></span>
 <!--                     <label for="community-maps" title="add about 12 player made levels the random n-gon 2.0 level pool">include community maps:</label>
-                    <input type="checkbox" id="community-maps" name="community-maps" style="width:17px; height:17px;"> -->
-                    <!-- <br>
+                    <input type="checkbox" id="community-maps" name="community-maps" style="width:17px; height:17px;"> 
+                     <br>
 					<label for="body-damage" title="allow damage from the ground and large fast moving blocks">collision damage from blocks:</label>
-					<input type="checkbox" id="body-damage" name="body-damage" checked style="width:17px; height:17px;"> -->
-                    <br>
-                    <label for="banned" title="type banned levels with a space between them.  Example:  run temple biohazard">banned levels:</label>
+					<input type="checkbox" id="body-damage" name="body-damage" checked style="width:17px; height:17px;"> 
+                     <br> -->
+                    <label for="banned" title="Type banned levels with a space between them. Example: testChamber satellite pavilion">Banned levels:</label>
                     <input list="ban-suggest" id="banned" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="false" style="width: 182px;" />
                     <datalist id="ban-suggest">
                         <option value="testChamber">
@@ -106,12 +106,12 @@
                         <option value="temple">
                         <option value="run"> -->
                     </datalist>
-                    <!-- communityLevels: ["stronghold", "basement", "crossfire", "vats", "run", "n-gon", "house", "perplex", "coliseum", "tunnel", "islands", "temple", "dripp"], -->
-                    <!-- playableLevels: ["labs", "rooftops", "skyscrapers", "warehouse", "highrise", "office", "aerie", "satellite", "sewers", "testChamber", "pavilion"], -->
+                    <!-- communityLevels: ["stronghold", "basement", "crossfire", "vats", "run", "n-gon", "house", "perplex", "coliseum", "tunnel", "islands", "temple", "dripp"], 
+                    playableLevels: ["labs", "rooftops", "skyscrapers", "warehouse", "highrise", "office", "aerie", "satellite", "sewers", "testChamber", "pavilion"], 
 
-                    <!--                <label for="banned">banned levels:</label>
-                    <input type="text" id="ban-list" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="true" style="width: 183px;"> -->
-<!--                     <br>
+                    <label for="banned">banned levels:</label>
+                    <input type="text" id="ban-list" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="true" style="width: 183px;">
+                     <br>
                     <label for="classic-select" title="play older versions of n-gon">classic n-gon:</label>
                     <select name="classic-select" id="classic-select" onChange="window.location.href=this.value">
                         <option value="https://scratch.mit.edu/projects/14005697/fullscreen/">mech: 2014</option>
@@ -183,8 +183,8 @@
                         </tr>
                         <tr>
                             <th>PAUSE</th>
-                            <td id='key-pause' class='key-input'>P</td>
-                            <!-- <td class='key-used'>Escape</td> -->
+				<td id='key-pause' class='key-input'>ESC</td>
+<!--                             <td id='key-pause' class='key-input'>P</td> -->
                             <td></td>
                         </tr>
                         <tr id="control-testing">
