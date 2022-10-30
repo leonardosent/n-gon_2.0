@@ -49,12 +49,13 @@
             <details>
                 <summary>Settings</summary>
                 <div style="line-height: 150%;" class="details-div">
-                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">combat difficulty:</label>
+                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">Combat difficulty:</label>
                     <select name="difficulty-select" id="difficulty-select" style="background-color: #fff">
-                        <option value="1">easy</option>
-                        <option value="2" selected>normal</option>
-                        <option value="4">hard</option>
-                        <option value="6">why?</option>
+                        <option value="0">Peaceful</option>
+                        <option value="1">Easy</option>
+                        <option value="2" Selected>normal</option>
+                        <option value="4">Hard</option>
+                        <option value="6">Tough</option>
                     </select>
                     <br>
                     <label for="fps-select" title="Use this to slow the game down">Limit frames per second:</label>
@@ -228,6 +229,8 @@
                             </g>
                         </svg>
                     </a> -->
+		    <a href="https://discord.com/channels/1036301770764320889/1036301771871633491"><strong>n-gon 2.0</strong>'s discord server</a><br>
+		    <br>
 		    <a href="https://landgreen.github.io/sidescroller/">Original <strong>n-gon</strong></a> by Landgreen<br>
                     <a href="https://github.com/leonardosent/n-gon_2.0"><strong>n-gon 2.0</strong>'s source code</a>: Written in JavaScript, CSS, and HTML and uses the matter.js 2-D physics library.<br>
 		    <a href="https://github.com/landgreen/n-gon">Original <strong>n-gon</strong>'s source code</a>. 2.5MB of code.<br>
@@ -243,8 +246,8 @@
         }
 
         .fade-in-fast {
-            opacity: 0;
-            animation: 1.5s ease 1s normal forwards 1 fadein;
+            opacity: 1;
+/*             animation: 1.5s ease 1s normal forwards 1 fadein; */
         }
 
         @keyframes fadein {
