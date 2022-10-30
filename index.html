@@ -49,21 +49,24 @@
             <details>
                 <summary>settings</summary>
                 <div style="line-height: 150%;" class="details-div">
-                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">combat difficulty:</label>
+                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">Combat difficulty:</label>
                     <select name="difficulty-select" id="difficulty-select" style="background-color: #fff">
-                        <option value="1">easy</option>
-                        <option value="2" selected>normal</option>
-                        <option value="4">hard</option>
-                        <option value="6">why?</option>
+                        <option value="0">Peaceful</option>
+                        <option value="1">Easy</option>
+                        <option value="2" selected>Normal</option>
+                        <option value="4">Hard</option>
+                        <option value="8">Impossible</option>
                     </select>
                     <br>
-                    <label for="fps-select" title="use this to slow the game down">limit frames per second:</label>
+                    <label for="fps-select" title="Use this to slow the game down">Limit frames per second:</label>
                     <select name="fps-select" id="fps-select">
-                        <option value="max" selected>no cap</option>
+                        <option value="max" selected>No limit</option>
+                        <option value="90">90 fps</option>
                         <option value="72">72 fps</option>
                         <option value="60">60 fps</option>
                         <option value="45">45 fps</option>
                         <option value="30">30 fps</option>
+                        <option value="15">15 fps</option>
                     </select>
                     <br>
                     <label for="seed" title="the randoms seed determines level order, tech choices, and mob types">randomization seed:</label>
@@ -76,7 +79,7 @@
 					<label for="body-damage" title="allow damage from the ground and large fast moving blocks">collision damage from blocks:</label>
 					<input type="checkbox" id="body-damage" name="body-damage" checked style="width:17px; height:17px;"> -->
                     <br>
-                    <label for="banned" title="type banned levels with a space between them.  Example:  run temple biohazard">banned levels:</label>
+                    <label for="banned" title="Type banned levels with a space between them.  Example:  sattellite, pavilion">Banned levels:</label>
                     <input list="ban-suggest" id="banned" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="false" style="width: 182px;" />
                     <datalist id="ban-suggest">
                         <option value="testChamber">
@@ -90,7 +93,7 @@
                         <option value="rooftops">
                         <option value="pavilion">
                         <option value="labs">
-                        <option value="______">
+<!--                         <option value="______">
                         <option value="biohazard">
                         <option value="islands">
                         <option value="tunnel">
@@ -104,7 +107,7 @@
                         <option value="dripp">
                         <option value="crossfire">
                         <option value="temple">
-                        <option value="run">
+                        <option value="run"> -->
                     </datalist>
                     <!-- communityLevels: ["stronghold", "basement", "crossfire", "vats", "run", "n-gon", "house", "perplex", "coliseum", "tunnel", "islands", "temple", "dripp"], -->
                     <!-- playableLevels: ["labs", "rooftops", "skyscrapers", "warehouse", "highrise", "office", "aerie", "satellite", "sewers", "testChamber", "pavilion"], -->
