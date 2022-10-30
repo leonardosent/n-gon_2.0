@@ -6,12 +6,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Browser-based side scrolling video game with the matter.js physics engine.">
-    <meta name="author" content="Leonardo Sent">
+    <meta name="author" content="Ross Landgreen">
     <meta property="og:description" content="Browser-based side scrolling video game with the matter.js physics engine.">
-    <meta property="og:title" content="n-gon 2.0">
-    <meta name="twitter:title" content="n-gon 2.0">
+    <meta property="og:title" content="n-gon">
+    <meta name="twitter:title" content="n-gon">
     <meta name="twitter:description" content="Browser-based side scrolling video game with the matter.js physics engine.">
-    <title>n-gon 2.0</title>
+    <title>n-gon</title>
     <link rel="stylesheet" href="style.css">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
 </head>
@@ -36,48 +36,47 @@
     <div style="position: absolute; top:0;right:0;">
         <div id="pause-grid-right" class="pause-grid"></div>
     </div>
-<!--     <svg class="SVG-button" id="experiment-button" width="280" height="45" style="border: 2px #333 solid;">
-        <g stroke='none' fill='#333' stroke-width="2" font-size="30px" font-family="Arial, sans-serif"> 
-            <text x="10" y="33">Experimental Mode</text>
-         </g>
-    </svg> -->
+    <svg class="SVG-button" id="experiment-button" width="170" height="45" style="border: 2px #333 solid;">
+        <g stroke='none' fill='#333' stroke-width="2" font-size="30px" font-family="Arial, sans-serif">
+            <text x="10" y="33">experiment</text>
+        </g>
+    </svg>
     <svg class="SVG-button" id="training-button" width="120" height="45" style="border: 2px #333 solid;" stroke='none' fill='#333' font-size="30px" font-family="Arial, sans-serif" onclick="simulation.startGame(false, true)">
-        <text x="10" y="33">Tutorial</text>
+        <text x="10" y="33">training</text>
     </svg>
     <div id='info'>
         <div id="settings">
             <details>
-                <summary>Settings</summary>
+                <summary>settings</summary>
                 <div style="line-height: 150%;" class="details-div">
-                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">Combat difficulty:</label>
+                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">combat difficulty:</label>
                     <select name="difficulty-select" id="difficulty-select" style="background-color: #fff">
-                        <option value="0">Peaceful</option>
-                        <option value="1">Easy</option>
-                        <option value="2" Selected>normal</option>
-                        <option value="4">Hard</option>
-                        <option value="8">Impossible</option>
+                        <option value="1">easy</option>
+                        <option value="2" selected>normal</option>
+                        <option value="4">hard</option>
+                        <option value="6">why?</option>
                     </select>
                     <br>
-                    <label for="fps-select" title="Use this to slow the game down">Limit frames per second:</label>
+                    <label for="fps-select" title="use this to slow the game down">limit frames per second:</label>
                     <select name="fps-select" id="fps-select">
-                        <option value="max" selected>No limit</option>
+                        <option value="max" selected>no cap</option>
                         <option value="72">72 fps</option>
                         <option value="60">60 fps</option>
                         <option value="45">45 fps</option>
                         <option value="30">30 fps</option>
                     </select>
                     <br>
-                    <label for="seed" title="The randoms seed determines level order, tech choices, and mob types">Randomization seed:</label>
+                    <label for="seed" title="the randoms seed determines level order, tech choices, and mob types">randomization seed:</label>
                     <input type="text" id="seed" name="seed" autocomplete="off" spellcheck="false" minlength="1" style="width: 120px;">
                     <br>
                     <span id="previous-seed" style="color:#bbb"></span>
-<!--                     <label for="community-maps" title="add about 12 player made levels the random n-gon 2.0 level pool">include community maps:</label>
-                    <input type="checkbox" id="community-maps" name="community-maps" style="width:17px; height:17px;"> 
-                     <br>
+                    <label for="community-maps" title="add about 12 player made levels the random n-gon level pool">include community maps:</label>
+                    <input type="checkbox" id="community-maps" name="community-maps" style="width:17px; height:17px;">
+                    <!-- <br>
 					<label for="body-damage" title="allow damage from the ground and large fast moving blocks">collision damage from blocks:</label>
-					<input type="checkbox" id="body-damage" name="body-damage" checked style="width:17px; height:17px;"> 
-                     <br> -->
-                    <label for="banned" title="Type banned levels with a space between them. Example: testChamber satellite pavilion">Banned levels:</label>
+					<input type="checkbox" id="body-damage" name="body-damage" checked style="width:17px; height:17px;"> -->
+                    <br>
+                    <label for="banned" title="type banned levels with a space between them.  Example:  run temple biohazard">banned levels:</label>
                     <input list="ban-suggest" id="banned" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="false" style="width: 182px;" />
                     <datalist id="ban-suggest">
                         <option value="testChamber">
@@ -91,7 +90,7 @@
                         <option value="rooftops">
                         <option value="pavilion">
                         <option value="labs">
-<!--                         <option value="______">
+                        <option value="______">
                         <option value="biohazard">
                         <option value="islands">
                         <option value="tunnel">
@@ -105,14 +104,14 @@
                         <option value="dripp">
                         <option value="crossfire">
                         <option value="temple">
-                        <option value="run"> -->
+                        <option value="run">
                     </datalist>
-                    <!-- communityLevels: ["stronghold", "basement", "crossfire", "vats", "run", "n-gon", "house", "perplex", "coliseum", "tunnel", "islands", "temple", "dripp"], 
-                    playableLevels: ["labs", "rooftops", "skyscrapers", "warehouse", "highrise", "office", "aerie", "satellite", "sewers", "testChamber", "pavilion"], 
+                    <!-- communityLevels: ["stronghold", "basement", "crossfire", "vats", "run", "n-gon", "house", "perplex", "coliseum", "tunnel", "islands", "temple", "dripp"], -->
+                    <!-- playableLevels: ["labs", "rooftops", "skyscrapers", "warehouse", "highrise", "office", "aerie", "satellite", "sewers", "testChamber", "pavilion"], -->
 
-                    <label for="banned">banned levels:</label>
-                    <input type="text" id="ban-list" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="true" style="width: 183px;">
-                     <br>
+                    <!--                <label for="banned">banned levels:</label>
+                    <input type="text" id="ban-list" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="true" style="width: 183px;"> -->
+                    <br>
                     <label for="classic-select" title="play older versions of n-gon">classic n-gon:</label>
                     <select name="classic-select" id="classic-select" onChange="window.location.href=this.value">
                         <option value="https://scratch.mit.edu/projects/14005697/fullscreen/">mech: 2014</option>
@@ -128,13 +127,13 @@
                         <option value="classic/7-15-2020/">n-gon: summer-2020</option>
                         <option value="classic/6-1-2021/">n-gon: spring-2021</option>
                         <option value="" selected>current version</option>
-                    </select> -->
+                    </select>
                 </div>
             </details>
         </div>
         <div>
             <details id="control-details">
-                <summary>Controls</summary>
+                <summary>controls</summary>
                 <div class="details-div">
                     To change controls click a box
                     <br>
@@ -184,8 +183,8 @@
                         </tr>
                         <tr>
                             <th>PAUSE</th>
-				<td id='key-pause' class='key-input'>P</td>
-                            	<td class='key-used'>ESCAPE</td>
+                            <td id='key-pause' class='key-input'>P</td>
+                            <!-- <td class='key-used'>Escape</td> -->
                             <td></td>
                         </tr>
                         <tr id="control-testing">
@@ -198,17 +197,17 @@
                 </div>
             </details>
         </div>
-<!--         <div>
+        <div>
             <details id="updates">
                 <summary>updates</summary>
                 <div id="updates-div" class="details-div" style="font-size: 65%;height: 400px;overflow: scroll;max-width: 450px;"></div>
             </details>
-        </div> -->
+        </div>
         <div>
             <details>
-                <summary>About</summary>
+                <summary>about</summary>
                 <div class="details-div" style="max-width: 450px;">
-<!--                     <a href="https://discord.gg/2eC9pgJ">
+                    <a href="https://discord.gg/2eC9pgJ">
                         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 235">
                             <style>
                                 .st0 {
@@ -220,20 +219,16 @@
                         </svg>
                     </a>
                     Chat about n-gon in the <a href="https://discord.gg/JyfrKbXTfw">discord</a>.<br> Let me know about ideas, or bugs.
-                    <br><br><br> -->
-<!--                     <a id="github" href="https://github.com/leonardosent/n-gon_2.0">
+                    <br><br><br>
+                    <a id="github" href="https://github.com/landgreen/n-gon">
                         <svg viewBox="0 0 100 16" xmlns="http://www.w3.org/2000/svg" fill="#1B1F23">
                             <path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" />
                             <g stroke='none' font-size="8px" font-family="Arial Black, sans-serif">
                                 <text x="19" y="11">Github</text>
                             </g>
                         </svg>
-                    </a> -->
-		    <a href="https://discord.com/channels/1036301770764320889/1036301771871633491"><strong>n-gon 2.0</strong>'s discord server</a><br>
-		    <br>
-		    <a href="https://landgreen.github.io/sidescroller/">Original <strong>n-gon</strong></a> by Landgreen<br>
-                    <a href="https://github.com/leonardosent/n-gon_2.0"><strong>n-gon 2.0</strong>'s source code</a>: Written in JavaScript, CSS, and HTML and uses the matter.js 2-D physics library.<br>
-		    <a href="https://github.com/landgreen/n-gon">Original <strong>n-gon</strong>'s source code</a>. 2.5MB of code.<br>
+                    </a>
+                    <a href="https://github.com/landgreen/n-gon">Github</a> hosts n-gon's 2.5MB source code.<br>It's written in JavaScript, CSS, and HTML and uses the matter.js 2-D physics library.
                 </div>
             </details>
         </div>
