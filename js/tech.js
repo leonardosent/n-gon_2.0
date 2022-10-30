@@ -7145,7 +7145,7 @@ const tech = {
             effect() {
                 tech.isFlyFaster = true
             },
-            remove()
+            remove() {
                 tech.isFlyFaster = false;
             }
         },
@@ -8670,37 +8670,37 @@ const tech = {
                 if (this.count) m.look = m.lookDefault
             }
         },
-//         {
-//             name: "motion sickness",
-//             description: `disable camera smoothing`,
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             // isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 m.look = () => {
-//                     //always on mouse look
-//                     m.angle = Math.atan2(
-//                         simulation.mouseInGame.y - m.pos.y,
-//                         simulation.mouseInGame.x - m.pos.x
-//                     );
-//                     //smoothed mouse look translations
-//                     const scale = 1.2;
-//                     m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-//                     m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
-//                     m.transX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-//                     m.transY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
-//                     // m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
-//                     // m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
-//                 }
-//             },
-//             remove() {
-//                 if (this.count) m.look = m.lookDefault
-//             }
-//         },
+        {
+            name: "motion sickness",
+            description: `disable camera smoothing`,
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            // isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                m.look = () => {
+                    //always on mouse look
+                    m.angle = Math.atan2(
+                        simulation.mouseInGame.y - m.pos.y,
+                        simulation.mouseInGame.x - m.pos.x
+                    );
+                    //smoothed mouse look translations
+                    const scale = 1.2;
+                    m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+                    m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+                    m.transX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+                    m.transY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+                    // m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
+                    // m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
+                }
+            },
+            remove() {
+                if (this.count) m.look = m.lookDefault
+            }
+        },
         {
             name: "facsimile",
             description: `inserts a copy of your current level into the level list`,
@@ -8717,126 +8717,126 @@ const tech = {
             },
             remove() {}
         },
-//         {
-//             name: "negative friction",
-//             description: "when you touch walls you speed up instead of slowing down. It's kinda fun.",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 player.friction = -0.4
-//             },
-//             remove() {
-//                 if (this.count) player.friction = 0.002
-//             }
-//         },
-//         {
-//             name: "bounce",
-//             description: "you bounce off things.  It's annoying, but not that bad.",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 player.restitution = 0.9
-//             },
-//             remove() {
-//                 if (this.count) player.restitution = 0
-//             }
-//         },
-//         {
-//             name: "mouth",
-//             description: "mobs have a non functional mouth",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 mobs.draw = () => {
-//                     ctx.lineWidth = 2;
-//                     let i = mob.length;
-//                     while (i--) {
-//                         ctx.beginPath();
-//                         const vertices = mob[i].vertices;
-//                         ctx.moveTo(vertices[0].x, vertices[0].y);
-//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
-//                         ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
-//                         ctx.fillStyle = mob[i].fill;
-//                         ctx.strokeStyle = mob[i].stroke;
-//                         ctx.fill();
-//                         ctx.stroke();
-//                     }
-//                 }
-//             },
-//             remove() {
-//                 mobs.draw = () => {
-//                     ctx.lineWidth = 2;
-//                     let i = mob.length;
-//                     while (i--) {
-//                         ctx.beginPath();
-//                         const vertices = mob[i].vertices;
-//                         ctx.moveTo(vertices[0].x, vertices[0].y);
-//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
-//                         ctx.lineTo(vertices[0].x, vertices[0].y);
-//                         ctx.fillStyle = mob[i].fill;
-//                         ctx.strokeStyle = mob[i].stroke;
-//                         ctx.fill();
-//                         ctx.stroke();
-//                     }
-//                 }
-//             }
-//         },
-// //         {
-// //             name: "all-stars",
-//             description: "make all mobs look like stars",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 mobs.draw = () => {
-//                     ctx.lineWidth = 2;
-//                     let i = mob.length;
-//                     while (i--) {
-//                         ctx.beginPath();
-//                         const vertices = mob[i].vertices;
-//                         ctx.moveTo(vertices[0].x, vertices[0].y);
-//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[j].x, vertices[j].y);
-//                         ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
-//                         ctx.fillStyle = mob[i].fill;
-//                         ctx.strokeStyle = mob[i].stroke;
-//                         ctx.fill();
-//                         ctx.stroke();
-//                     }
-//                 }
-//             },
-//             remove() {
-//                 mobs.draw = () => {
-//                     ctx.lineWidth = 2;
-//                     let i = mob.length;
-//                     while (i--) {
-//                         ctx.beginPath();
-//                         const vertices = mob[i].vertices;
-//                         ctx.moveTo(vertices[0].x, vertices[0].y);
-//                         for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
-//                         ctx.lineTo(vertices[0].x, vertices[0].y);
-//                         ctx.fillStyle = mob[i].fill;
-//                         ctx.strokeStyle = mob[i].stroke;
-//                         ctx.fill();
-//                         ctx.stroke();
-//                     }
-//                 }
-//             }
-//         },
+        {
+            name: "negative friction",
+            description: "when you touch walls you speed up instead of slowing down. It's kinda fun.",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                player.friction = -0.4
+            },
+            remove() {
+                if (this.count) player.friction = 0.002
+            }
+        },
+        {
+            name: "bounce",
+            description: "you bounce off things.  It's annoying, but not that bad.",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                player.restitution = 0.9
+            },
+            remove() {
+                if (this.count) player.restitution = 0
+            }
+        },
+        {
+            name: "mouth",
+            description: "mobs have a non functional mouth",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                mobs.draw = () => {
+                    ctx.lineWidth = 2;
+                    let i = mob.length;
+                    while (i--) {
+                        ctx.beginPath();
+                        const vertices = mob[i].vertices;
+                        ctx.moveTo(vertices[0].x, vertices[0].y);
+                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
+                        ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
+                        ctx.fillStyle = mob[i].fill;
+                        ctx.strokeStyle = mob[i].stroke;
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                }
+            },
+            remove() {
+                mobs.draw = () => {
+                    ctx.lineWidth = 2;
+                    let i = mob.length;
+                    while (i--) {
+                        ctx.beginPath();
+                        const vertices = mob[i].vertices;
+                        ctx.moveTo(vertices[0].x, vertices[0].y);
+                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
+                        ctx.lineTo(vertices[0].x, vertices[0].y);
+                        ctx.fillStyle = mob[i].fill;
+                        ctx.strokeStyle = mob[i].stroke;
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                }
+            }
+        },
+        {
+            name: "all-stars",
+            description: "make all mobs look like stars",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                mobs.draw = () => {
+                    ctx.lineWidth = 2;
+                    let i = mob.length;
+                    while (i--) {
+                        ctx.beginPath();
+                        const vertices = mob[i].vertices;
+                        ctx.moveTo(vertices[0].x, vertices[0].y);
+                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[j].x, vertices[j].y);
+                        ctx.quadraticCurveTo(mob[i].position.x, mob[i].position.y, vertices[0].x, vertices[0].y);
+                        ctx.fillStyle = mob[i].fill;
+                        ctx.strokeStyle = mob[i].stroke;
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                }
+            },
+            remove() {
+                mobs.draw = () => {
+                    ctx.lineWidth = 2;
+                    let i = mob.length;
+                    while (i--) {
+                        ctx.beginPath();
+                        const vertices = mob[i].vertices;
+                        ctx.moveTo(vertices[0].x, vertices[0].y);
+                        for (let j = 1, len = vertices.length; j < len; ++j) ctx.lineTo(vertices[j].x, vertices[j].y);
+                        ctx.lineTo(vertices[0].x, vertices[0].y);
+                        ctx.fillStyle = mob[i].fill;
+                        ctx.strokeStyle = mob[i].stroke;
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                }
+            }
+        },
         // draw() {
         //     ctx.lineWidth = 2;
         //     let i = mob.length;
@@ -8852,269 +8852,269 @@ const tech = {
         //         ctx.stroke();
         //     }
         // },
-//         {
-//             name: "true colors",
-//             description: `set all power ups to their real world colors`,
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             isNonRefundable: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 // const colors = shuffle(["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"])
-//                 const colors = shuffle([powerUps.research.color, powerUps.heal.color, powerUps.ammo.color, powerUps.ammo.color, powerUps.field.color, powerUps.gun.color])
-//                 powerUps.research.color = colors[0]
-//                 powerUps.heal.color = colors[1]
-//                 powerUps.ammo.color = colors[2]
-//                 powerUps.field.color = colors[3]
-//                 powerUps.tech.color = colors[4]
-//                 powerUps.gun.color = colors[5]
-//                 for (let i = 0; i < powerUp.length; i++) {
-//                     switch (powerUp[i].name) {
-//                         case "research":
-//                             powerUp[i].color = colors[0]
-//                             break;
-//                         case "heal":
-//                             powerUp[i].color = colors[1]
-//                             break;
-//                         case "ammo":
-//                             powerUp[i].color = colors[2]
-//                             break;
-//                         case "field":
-//                             powerUp[i].color = colors[3]
-//                             break;
-//                         case "tech":
-//                             powerUp[i].color = colors[4]
-//                             break;
-//                         case "gun":
-//                             powerUp[i].color = colors[5]
-//                             break;
-//                     }
-//                 }
-//             },
-//             remove() {
-//                 // const colors = ["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"] //no shuffle
-//                 // powerUps.research.color = colors[0]
-//                 // powerUps.heal.color = colors[1]
-//                 // powerUps.ammo.color = colors[2]
-//                 // powerUps.field.color = colors[3]
-//                 // powerUps.tech.color = colors[4]
-//                 // powerUps.gun.color = colors[5]
-//                 // for (let i = 0; i < powerUp.length; i++) {
-//                 //     switch (powerUp[i].name) {
-//                 //         case "research":
-//                 //             powerUp[i].color = colors[0]
-//                 //             break;
-//                 //         case "heal":
-//                 //             powerUp[i].color = colors[1]
-//                 //             break;
-//                 //         case "ammo":
-//                 //             powerUp[i].color = colors[2]
-//                 //             break;
-//                 //         case "field":
-//                 //             powerUp[i].color = colors[3]
-//                 //             break;
-//                 //         case "tech":
-//                 //             powerUp[i].color = colors[4]
-//                 //             break;
-//                 //         case "gun":
-//                 //             powerUp[i].color = colors[5]
-//                 //             break;
-//                 //     }
-//                 // }
-//             }
-//         },
-//         {
-//             name: "emergency broadcasting",
-//             description: "emit 2 sine waveforms at 853 Hz and 960 Hz<br><em>lower your volume</em>",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             isNonRefundable: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect: () => {
-//                 //setup audio context
-//                 function tone(frequency) {
-//                     const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-//                     const oscillator1 = audioCtx.createOscillator();
-//                     const gainNode1 = audioCtx.createGain();
-//                     gainNode1.gain.value = 0.5; //controls volume
-//                     oscillator1.connect(gainNode1);
-//                     gainNode1.connect(audioCtx.destination);
-//                     oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
-//                     oscillator1.frequency.value = frequency; // value in hertz
-//                     oscillator1.start();
-//                     return audioCtx
-//                 }
-//                 // let sound = tone(1050)
+        {
+            name: "true colors",
+            description: `set all power ups to their real world colors`,
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            isNonRefundable: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                // const colors = shuffle(["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"])
+                const colors = shuffle([powerUps.research.color, powerUps.heal.color, powerUps.ammo.color, powerUps.ammo.color, powerUps.field.color, powerUps.gun.color])
+                powerUps.research.color = colors[0]
+                powerUps.heal.color = colors[1]
+                powerUps.ammo.color = colors[2]
+                powerUps.field.color = colors[3]
+                powerUps.tech.color = colors[4]
+                powerUps.gun.color = colors[5]
+                for (let i = 0; i < powerUp.length; i++) {
+                    switch (powerUp[i].name) {
+                        case "research":
+                            powerUp[i].color = colors[0]
+                            break;
+                        case "heal":
+                            powerUp[i].color = colors[1]
+                            break;
+                        case "ammo":
+                            powerUp[i].color = colors[2]
+                            break;
+                        case "field":
+                            powerUp[i].color = colors[3]
+                            break;
+                        case "tech":
+                            powerUp[i].color = colors[4]
+                            break;
+                        case "gun":
+                            powerUp[i].color = colors[5]
+                            break;
+                    }
+                }
+            },
+            remove() {
+                // const colors = ["#f7b", "#0eb", "#467", "#0cf", "hsl(246,100%,77%)", "#26a"] //no shuffle
+                // powerUps.research.color = colors[0]
+                // powerUps.heal.color = colors[1]
+                // powerUps.ammo.color = colors[2]
+                // powerUps.field.color = colors[3]
+                // powerUps.tech.color = colors[4]
+                // powerUps.gun.color = colors[5]
+                // for (let i = 0; i < powerUp.length; i++) {
+                //     switch (powerUp[i].name) {
+                //         case "research":
+                //             powerUp[i].color = colors[0]
+                //             break;
+                //         case "heal":
+                //             powerUp[i].color = colors[1]
+                //             break;
+                //         case "ammo":
+                //             powerUp[i].color = colors[2]
+                //             break;
+                //         case "field":
+                //             powerUp[i].color = colors[3]
+                //             break;
+                //         case "tech":
+                //             powerUp[i].color = colors[4]
+                //             break;
+                //         case "gun":
+                //             powerUp[i].color = colors[5]
+                //             break;
+                //     }
+                // }
+            }
+        },
+        {
+            name: "emergency broadcasting",
+            description: "emit 2 sine waveforms at 853 Hz and 960 Hz<br><em>lower your volume</em>",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            isNonRefundable: true,
+            allowed() { return true },
+            requires: "",
+            effect: () => {
+                //setup audio context
+                function tone(frequency) {
+                    const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                    const oscillator1 = audioCtx.createOscillator();
+                    const gainNode1 = audioCtx.createGain();
+                    gainNode1.gain.value = 0.5; //controls volume
+                    oscillator1.connect(gainNode1);
+                    gainNode1.connect(audioCtx.destination);
+                    oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
+                    oscillator1.frequency.value = frequency; // value in hertz
+                    oscillator1.start();
+                    return audioCtx
+                }
+                // let sound = tone(1050)
 
-//                 function EBS() {
-//                     const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                function EBS() {
+                    const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
-//                     const oscillator1 = audioCtx.createOscillator();
-//                     const gainNode1 = audioCtx.createGain();
-//                     gainNode1.gain.value = 0.3; //controls volume
-//                     oscillator1.connect(gainNode1);
-//                     gainNode1.connect(audioCtx.destination);
-//                     oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
-//                     oscillator1.frequency.value = 850; // value in hertz
-//                     oscillator1.start();
+                    const oscillator1 = audioCtx.createOscillator();
+                    const gainNode1 = audioCtx.createGain();
+                    gainNode1.gain.value = 0.3; //controls volume
+                    oscillator1.connect(gainNode1);
+                    gainNode1.connect(audioCtx.destination);
+                    oscillator1.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
+                    oscillator1.frequency.value = 850; // value in hertz
+                    oscillator1.start();
 
-//                     const oscillator2 = audioCtx.createOscillator();
-//                     const gainNode2 = audioCtx.createGain();
-//                     gainNode2.gain.value = 0.3; //controls volume
-//                     oscillator2.connect(gainNode2);
-//                     gainNode2.connect(audioCtx.destination);
-//                     oscillator2.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
-//                     oscillator2.frequency.value = 957; // value in hertz
-//                     oscillator2.start();
-//                     return audioCtx
-//                 }
-//                 let sound = EBS()
+                    const oscillator2 = audioCtx.createOscillator();
+                    const gainNode2 = audioCtx.createGain();
+                    gainNode2.gain.value = 0.3; //controls volume
+                    oscillator2.connect(gainNode2);
+                    gainNode2.connect(audioCtx.destination);
+                    oscillator2.type = "sine"; // 'sine' 'square', 'sawtooth', 'triangle' and 'custom'
+                    oscillator2.frequency.value = 957; // value in hertz
+                    oscillator2.start();
+                    return audioCtx
+                }
+                let sound = EBS()
 
-//                 delay = 1000
-//                 setTimeout(() => {
-//                     sound.suspend()
-//                     powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-//                     setTimeout(() => {
-//                         sound.resume()
-//                         setTimeout(() => {
-//                             sound.suspend()
-//                             powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-//                             setTimeout(() => {
-//                                 sound.resume()
-//                                 setTimeout(() => {
-//                                     sound.suspend()
-//                                     powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-//                                     setTimeout(() => {
-//                                         sound.resume()
-//                                         setTimeout(() => {
-//                                             sound.suspend()
-//                                             powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-//                                             setTimeout(() => {
-//                                                 sound.resume()
-//                                                 setTimeout(() => {
-//                                                     sound.suspend()
-//                                                     powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-//                                                     setTimeout(() => {
-//                                                         sound.resume()
-//                                                         setTimeout(() => {
-//                                                             sound.suspend()
-//                                                             sound.close()
-//                                                             powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-//                                                         }, delay);
-//                                                     }, delay);
-//                                                 }, delay);
-//                                             }, delay);
-//                                         }, delay);
-//                                     }, delay);
-//                                 }, delay);
-//                             }, delay);
-//                         }, delay);
-//                     }, delay);
-//                 }, delay);
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "automatic",
-//             description: "you can't fire when moving<br>always <strong>fire</strong> when at <strong>rest</strong>",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() {
-//                 return !tech.isFireMoveLock
-//             },
-//             requires: "not Higgs mechanism",
-//             effect() {
-//                 tech.isAlwaysFire = true;
-//                 b.setFireMethod();
-//             },
-//             remove() {
-//                 if (tech.isAlwaysFire) {
-//                     tech.isAlwaysFire = false
-//                     b.setFireMethod();
-//                 }
-//             }
-//         },
-//         {
-//             name: "hidden variable",
-//             descriptionFunction() {
-//                 return `spawn ${powerUps.orb.heal(20)}<br>but hide your <strong class='color-h'>health</strong> bar`
-//             },
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 document.getElementById("health").style.display = "none"
-//                 document.getElementById("health-bg").style.display = "none"
-//                 for (let i = 0; i < 20; i++) powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "not a bug",
-//             description: "initiate a totally safe game crash for 10 seconds",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 const savedfunction = simulation.drawCircle
-//                 simulation.drawCircle = () => {
-//                     const a = mob[Infinity].position //crashed the game in a visually interesting way, because of the ctx.translate command is never reverted in the main game loop
-//                 }
-//                 setTimeout(() => {
-//                     simulation.drawCircle = savedfunction
-//                     canvas.width = canvas.width //clears the canvas // works on chrome at least
-//                     powerUps.spawn(m.pos.x, m.pos.y, "tech");
-//                 }, 10000);
+                delay = 1000
+                setTimeout(() => {
+                    sound.suspend()
+                    powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+                    setTimeout(() => {
+                        sound.resume()
+                        setTimeout(() => {
+                            sound.suspend()
+                            powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+                            setTimeout(() => {
+                                sound.resume()
+                                setTimeout(() => {
+                                    sound.suspend()
+                                    powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+                                    setTimeout(() => {
+                                        sound.resume()
+                                        setTimeout(() => {
+                                            sound.suspend()
+                                            powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+                                            setTimeout(() => {
+                                                sound.resume()
+                                                setTimeout(() => {
+                                                    sound.suspend()
+                                                    powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+                                                    setTimeout(() => {
+                                                        sound.resume()
+                                                        setTimeout(() => {
+                                                            sound.suspend()
+                                                            sound.close()
+                                                            powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+                                                        }, delay);
+                                                    }, delay);
+                                                }, delay);
+                                            }, delay);
+                                        }, delay);
+                                    }, delay);
+                                }, delay);
+                            }, delay);
+                        }, delay);
+                    }, delay);
+                }, delay);
+            },
+            remove() {}
+        },
+        {
+            name: "automatic",
+            description: "you can't fire when moving<br>always <strong>fire</strong> when at <strong>rest</strong>",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() {
+                return !tech.isFireMoveLock
+            },
+            requires: "not Higgs mechanism",
+            effect() {
+                tech.isAlwaysFire = true;
+                b.setFireMethod();
+            },
+            remove() {
+                if (tech.isAlwaysFire) {
+                    tech.isAlwaysFire = false
+                    b.setFireMethod();
+                }
+            }
+        },
+        {
+            name: "hidden variable",
+            descriptionFunction() {
+                return `spawn ${powerUps.orb.heal(20)}<br>but hide your <strong class='color-h'>health</strong> bar`
+            },
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                document.getElementById("health").style.display = "none"
+                document.getElementById("health-bg").style.display = "none"
+                for (let i = 0; i < 20; i++) powerUps.spawn(m.pos.x + 160 * (Math.random() - 0.5), m.pos.y + 160 * (Math.random() - 0.5), "heal");
+            },
+            remove() {}
+        },
+        {
+            name: "not a bug",
+            description: "initiate a totally safe game crash for 10 seconds",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                const savedfunction = simulation.drawCircle
+                simulation.drawCircle = () => {
+                    const a = mob[Infinity].position //crashed the game in a visually interesting way, because of the ctx.translate command is never reverted in the main game loop
+                }
+                setTimeout(() => {
+                    simulation.drawCircle = savedfunction
+                    canvas.width = canvas.width //clears the canvas // works on chrome at least
+                    powerUps.spawn(m.pos.x, m.pos.y, "tech");
+                }, 10000);
 
-//                 // for (;;) {} //freezes the tab
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "spinor",
-//             description: "the direction you aim is determined by your position",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() {
-//                 return !m.isShipMode
-//             },
-//             requires: "",
-//             effect() {
-//                 m.look = function() {
-//                     //always on mouse look
-//                     m.angle = (((m.pos.x + m.pos.y) / 100 + Math.PI) % Math.PI * 2) - Math.PI
-//                     //smoothed mouse look translations
-//                     const scale = 0.8;
-//                     m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
-//                     m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
+                // for (;;) {} //freezes the tab
+            },
+            remove() {}
+        },
+        {
+            name: "spinor",
+            description: "the direction you aim is determined by your position",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() {
+                return !m.isShipMode
+            },
+            requires: "",
+            effect() {
+                m.look = function() {
+                    //always on mouse look
+                    m.angle = (((m.pos.x + m.pos.y) / 100 + Math.PI) % Math.PI * 2) - Math.PI
+                    //smoothed mouse look translations
+                    const scale = 0.8;
+                    m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
+                    m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
 
-//                     m.transX += (m.transSmoothX - m.transX) * 0.07;
-//                     m.transY += (m.transSmoothY - m.transY) * 0.07;
-//                 }
-//             },
-//             remove() {
-//                 if (this.count) m.look = m.lookDefault
-//             }
-//         },
+                    m.transX += (m.transSmoothX - m.transX) * 0.07;
+                    m.transY += (m.transSmoothY - m.transY) * 0.07;
+                }
+            },
+            remove() {
+                if (this.count) m.look = m.lookDefault
+            }
+        },
         {
             name: "decomposers",
             description: "after they die <strong>mobs</strong> leave behind <strong>spawns</strong>",
@@ -9134,28 +9134,28 @@ const tech = {
                 tech.deathSpawns = 0
             }
         },
-//         {
-//             name: "panopticon",
-//             description: "<strong>mobs</strong> can always see you",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 setInterval(() => {
-//                     for (let i = 0; i < mob.length; i++) {
-//                         if (!mob[i].shield && mob[i].isDropPowerUp) {
-//                             mob[i].locatePlayer()
-//                             mob[i].seePlayer.yes = true;
-//                         }
-//                     }
-//                 }, 1000); //every 1 seconds
-//             },
-//             remove() {}
-//         },
+        {
+            name: "panopticon",
+            description: "<strong>mobs</strong> can always see you",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                setInterval(() => {
+                    for (let i = 0; i < mob.length; i++) {
+                        if (!mob[i].shield && mob[i].isDropPowerUp) {
+                            mob[i].locatePlayer()
+                            mob[i].seePlayer.yes = true;
+                        }
+                    }
+                }, 1000); //every 1 seconds
+            },
+            remove() {}
+        },
         // {
         //     name: "inverted mouse",
         //     description: "your mouse is scrambled<br>it's fine, just rotate it 90 degrees",
@@ -9302,7 +9302,7 @@ const tech = {
         },
         {
             name: "score",
-            description: "Add a score to n-gon!",
+            description: "Add a score to n-gon 2.0!",
             maxCount: 1,
             count: 0,
             frequency: 0,
@@ -9318,26 +9318,26 @@ const tech = {
             },
             remove() {}
         },
-        {
-            name: "pop-ups",
-            description: "sign up to learn endless easy ways to win n-gon<br>that Landgreen doesn't want you to know!!!1!!",
-            maxCount: 1,
-            count: 0,
-            frequency: 0,
-            isNonRefundable: true,
-            isJunk: true,
-            allowed() { return true },
-            requires: "",
-            effect() {
-                setInterval(() => {
-                    alert(`The best combo is ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name} with ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name}!`);
-                }, 30000); //every 30 seconds
-            },
-            remove() {}
-        },
+//         {
+//             name: "pop-ups",
+//             description: "sign up to learn endless easy ways to win n-gon 2.0<br>that Landgreen doesn't want you to know!!!1!!",
+//             maxCount: 1,
+//             count: 0,
+//             frequency: 0,
+//             isNonRefundable: true,
+//             isJunk: true,
+//             allowed() { return true },
+//             requires: "",
+//             effect() {
+//                 setInterval(() => {
+//                     alert(`The best combo is ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name} with ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name}!`);
+//                 }, 30000); //every 30 seconds
+//             },
+//             remove() {}
+//         },
         {
             name: "music",
-            description: "add music to n-gon",
+            description: "add music to n-gon 2.0",
             maxCount: 1,
             count: 0,
             frequency: 0,
@@ -9352,7 +9352,7 @@ const tech = {
         },
         {
             name: "performance",
-            description: "display performance stats to n-gon",
+            description: "display performance stats to n-gon 2.0",
             maxCount: 1,
             count: 0,
             frequency: 0,
@@ -9440,37 +9440,37 @@ const tech = {
         //     },
         //     remove() {}
         // },
-//         {
-//             name: "pitch",
-//             description: "oscillate the pitch of your world",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 setInterval(() => { if (!simulation.paused) ctx.rotate(0.001 * Math.sin(simulation.cycle * 0.01)) }, 16);
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "umbra",
-//             description: "produce a blue glow around everything<br>and probably some simulation lag",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 ctx.shadowColor = '#06f';
-//                 ctx.shadowBlur = 25;
-//             },
-//             remove() {}
-//         },
+        {
+            name: "pitch",
+            description: "oscillate the pitch of your world",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                setInterval(() => { if (!simulation.paused) ctx.rotate(0.001 * Math.sin(simulation.cycle * 0.01)) }, 16);
+            },
+            remove() {}
+        },
+        {
+            name: "umbra",
+            description: "produce a blue glow around everything<br>and probably some simulation lag",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                ctx.shadowColor = '#06f';
+                ctx.shadowBlur = 25;
+            },
+            remove() {}
+        },
         {
             name: "lighter",
             description: `ctx.globalCompositeOperation = "lighter"`,
@@ -9703,386 +9703,386 @@ const tech = {
         //     },
         //     remove() {}
         // },
-//         {
-//             name: "Sleipnir",
-//             description: "grow more legs",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return !m.isShipMode },
-//             requires: "",
-//             effect() {
-//                 m.draw = function() {
-//                     ctx.fillStyle = m.fillColor;
-//                     m.walk_cycle += m.flipLegs * m.Vx;
+        {
+            name: "Sleipnir",
+            description: "grow more legs",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return !m.isShipMode },
+            requires: "",
+            effect() {
+                m.draw = function() {
+                    ctx.fillStyle = m.fillColor;
+                    m.walk_cycle += m.flipLegs * m.Vx;
 
-//                     //draw body
-//                     ctx.save();
-//                     ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.5
-//                     ctx.translate(m.pos.x, m.pos.y);
-//                     for (let i = 0; i < 16; i++) {
-//                         m.calcLeg(Math.PI * i / 8, -3 * i / 16)
-//                         m.drawLeg("#444")
-//                     }
-//                     ctx.rotate(m.angle);
+                    //draw body
+                    ctx.save();
+                    ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.5
+                    ctx.translate(m.pos.x, m.pos.y);
+                    for (let i = 0; i < 16; i++) {
+                        m.calcLeg(Math.PI * i / 8, -3 * i / 16)
+                        m.drawLeg("#444")
+                    }
+                    ctx.rotate(m.angle);
 
-//                     ctx.beginPath();
-//                     ctx.arc(0, 0, 30, 0, 2 * Math.PI);
-//                     ctx.fillStyle = m.bodyGradient
-//                     ctx.fill();
-//                     ctx.arc(15, 0, 4, 0, 2 * Math.PI);
-//                     ctx.strokeStyle = "#333";
-//                     ctx.lineWidth = 2;
-//                     ctx.stroke();
-//                     // ctx.beginPath();
-//                     // ctx.arc(15, 0, 3, 0, 2 * Math.PI);
-//                     // ctx.fillStyle = '#0cf';
-//                     // ctx.fill()
-//                     ctx.restore();
-//                     m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15; //smoothly move leg height towards height goal
-//                 }
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "diegesis",
-//             description: "indicate fire cooldown</strong><br>through a rotation of your head",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return !m.isShipMode },
-//             requires: "",
-//             effect() {
-//                 m.draw = function() {
-//                     ctx.fillStyle = m.fillColor;
-//                     m.walk_cycle += m.flipLegs * m.Vx;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 30, 0, 2 * Math.PI);
+                    ctx.fillStyle = m.bodyGradient
+                    ctx.fill();
+                    ctx.arc(15, 0, 4, 0, 2 * Math.PI);
+                    ctx.strokeStyle = "#333";
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    // ctx.beginPath();
+                    // ctx.arc(15, 0, 3, 0, 2 * Math.PI);
+                    // ctx.fillStyle = '#0cf';
+                    // ctx.fill()
+                    ctx.restore();
+                    m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15; //smoothly move leg height towards height goal
+                }
+            },
+            remove() {}
+        },
+        {
+            name: "diegesis",
+            description: "indicate fire cooldown</strong><br>through a rotation of your head",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return !m.isShipMode },
+            requires: "",
+            effect() {
+                m.draw = function() {
+                    ctx.fillStyle = m.fillColor;
+                    m.walk_cycle += m.flipLegs * m.Vx;
 
-//                     ctx.save();
-//                     ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.5
-//                     ctx.translate(m.pos.x, m.pos.y);
-//                     m.calcLeg(Math.PI, -3);
-//                     m.drawLeg("#4a4a4a");
-//                     m.calcLeg(0, 0);
-//                     m.drawLeg("#333");
-//                     ctx.rotate(m.angle - (m.fireCDcycle != Infinity ? m.flipLegs * 0.25 * Math.pow(Math.max(m.fireCDcycle - m.cycle, 0), 0.5) : 0));
+                    ctx.save();
+                    ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.5
+                    ctx.translate(m.pos.x, m.pos.y);
+                    m.calcLeg(Math.PI, -3);
+                    m.drawLeg("#4a4a4a");
+                    m.calcLeg(0, 0);
+                    m.drawLeg("#333");
+                    ctx.rotate(m.angle - (m.fireCDcycle != Infinity ? m.flipLegs * 0.25 * Math.pow(Math.max(m.fireCDcycle - m.cycle, 0), 0.5) : 0));
 
-//                     ctx.beginPath();
-//                     ctx.arc(0, 0, 30, 0, 2 * Math.PI);
-//                     ctx.fillStyle = m.bodyGradient
-//                     ctx.fill();
-//                     ctx.arc(15, 0, 4, 0, 2 * Math.PI);
-//                     ctx.strokeStyle = "#333";
-//                     ctx.lineWidth = 2;
-//                     ctx.stroke();
-//                     ctx.restore();
-//                     m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15; //smoothly move leg height towards height goal
-//                 }
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "🐱",
-//             description: "🐈",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() {
-//                 return !m.isShipMode
-//             },
-//             requires: "",
-//             effect() {
-//                 m.draw = function() {
-//                     ctx.fillStyle = m.fillColor;
-//                     m.walk_cycle += m.flipLegs * m.Vx;
-//                     ctx.save();
-//                     ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.5
-//                     ctx.translate(m.pos.x, m.pos.y);
-//                     m.calcLeg(Math.PI, -3);
-//                     m.drawLeg("#4a4a4a");
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 30, 0, 2 * Math.PI);
+                    ctx.fillStyle = m.bodyGradient
+                    ctx.fill();
+                    ctx.arc(15, 0, 4, 0, 2 * Math.PI);
+                    ctx.strokeStyle = "#333";
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    ctx.restore();
+                    m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15; //smoothly move leg height towards height goal
+                }
+            },
+            remove() {}
+        },
+        {
+            name: "🐱",
+            description: "🐈",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() {
+                return !m.isShipMode
+            },
+            requires: "",
+            effect() {
+                m.draw = function() {
+                    ctx.fillStyle = m.fillColor;
+                    m.walk_cycle += m.flipLegs * m.Vx;
+                    ctx.save();
+                    ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.5
+                    ctx.translate(m.pos.x, m.pos.y);
+                    m.calcLeg(Math.PI, -3);
+                    m.drawLeg("#4a4a4a");
 
 
-//                     if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) {
-//                         ctx.scale(1, -1);
-//                         ctx.rotate(Math.PI);
-//                     }
-//                     ctx.beginPath();
-//                     ctx.moveTo(-30, 0);
-//                     ctx.bezierCurveTo(-65, -75,
-//                         -5, 150 + (5 * Math.sin(simulation.cycle / 10)),
-//                         -70 + (10 * Math.sin(simulation.cycle / 10)), 0 + (10 * Math.sin(simulation.cycle / 10)));
-//                     ctx.strokeStyle = "#333";
-//                     ctx.lineWidth = 4;
-//                     ctx.stroke();
+                    if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) {
+                        ctx.scale(1, -1);
+                        ctx.rotate(Math.PI);
+                    }
+                    ctx.beginPath();
+                    ctx.moveTo(-30, 0);
+                    ctx.bezierCurveTo(-65, -75,
+                        -5, 150 + (5 * Math.sin(simulation.cycle / 10)),
+                        -70 + (10 * Math.sin(simulation.cycle / 10)), 0 + (10 * Math.sin(simulation.cycle / 10)));
+                    ctx.strokeStyle = "#333";
+                    ctx.lineWidth = 4;
+                    ctx.stroke();
 
-//                     if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) {
-//                         ctx.scale(1, -1);
-//                         ctx.rotate(0 - Math.PI);
-//                     }
-//                     m.calcLeg(0, 0);
-//                     m.drawLeg("#333");
+                    if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) {
+                        ctx.scale(1, -1);
+                        ctx.rotate(0 - Math.PI);
+                    }
+                    m.calcLeg(0, 0);
+                    m.drawLeg("#333");
 
-//                     ctx.rotate(m.angle);
-//                     if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) ctx.scale(1, -1);
-//                     ctx.beginPath();
-//                     ctx.moveTo(5, -30);
-//                     ctx.lineTo(20, -40);
-//                     ctx.lineTo(20, -20);
-//                     ctx.lineWidth = 2;
-//                     ctx.fillStyle = "#f3f";
-//                     ctx.fill();
-//                     ctx.stroke();
+                    ctx.rotate(m.angle);
+                    if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) ctx.scale(1, -1);
+                    ctx.beginPath();
+                    ctx.moveTo(5, -30);
+                    ctx.lineTo(20, -40);
+                    ctx.lineTo(20, -20);
+                    ctx.lineWidth = 2;
+                    ctx.fillStyle = "#f3f";
+                    ctx.fill();
+                    ctx.stroke();
 
-//                     ctx.beginPath();
-//                     ctx.arc(0, 0, 30, 0, 2 * Math.PI);
-//                     ctx.fillStyle = m.bodyGradient
-//                     ctx.fill();
-//                     ctx.stroke();
-//                     ctx.moveTo(19, 0);
-//                     ctx.arc(15, 0, 4, Math.PI, 2 * Math.PI);
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(24.3, 6, 5, Math.PI * 2, Math.PI);
-//                     ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 30, 0, 2 * Math.PI);
+                    ctx.fillStyle = m.bodyGradient
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.moveTo(19, 0);
+                    ctx.arc(15, 0, 4, Math.PI, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(24.3, 6, 5, Math.PI * 2, Math.PI);
+                    ctx.stroke();
 
-//                     ctx.beginPath();
-//                     ctx.moveTo(30, 6);
-//                     ctx.lineTo(32, 0);
-//                     ctx.lineTo(26, 0);
-//                     ctx.lineTo(30, 6);
-//                     ctx.fillStyle = "#f3f";
-//                     ctx.fill();
-//                     ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(30, 6);
+                    ctx.lineTo(32, 0);
+                    ctx.lineTo(26, 0);
+                    ctx.lineTo(30, 6);
+                    ctx.fillStyle = "#f3f";
+                    ctx.fill();
+                    ctx.stroke();
 
-//                     ctx.restore();
-//                     m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15; //smoothly move leg height towards height goal
-//                 }
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "transparency",
-//             description: "become invisible to yourself<br><em>mobs can still see you</em>",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 m.draw = () => {}
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "posture",
-//             description: "stand a bit taller",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isJunk: true,
-//             allowed() {
-//                 return !m.isShipMode
-//             },
-//             requires: "",
-//             effect() {
-//                 m.yOffWhen.stand = 70
-//             },
-//             remove() {
-//                 m.yOffWhen.stand = 49
-//             }
-//         },
-//         {
-//             name: "rhythm",
-//             description: "you oscillate up and down",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isJunk: true,
-//             isNonRefundable: true,
-//             allowed() {
-//                 return !m.isShipMode
-//             },
-//             requires: "",
-//             effect() {
-//                 setInterval(() => {
-//                     m.yOffWhen.stand = 53 + 28 * Math.sin(simulation.cycle * 0.2)
-//                     if (m.onGround && !m.crouch) m.yOffGoal = m.yOffWhen.stand
-//                 }, 100);
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "pareidolia",
-//             description: "don't",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() {
-//                 return !m.isShipMode
-//             },
-//             requires: "",
-//             effect() {
-//                 m.draw = function() {
-//                     ctx.fillStyle = m.fillColor;
-//                     m.walk_cycle += m.flipLegs * m.Vx;
-//                     ctx.save();
-//                     ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.7
-//                     ctx.translate(m.pos.x, m.pos.y);
-//                     m.calcLeg(Math.PI, -3);
-//                     m.drawLeg("#4a4a4a");
-//                     m.calcLeg(0, 0);
-//                     m.drawLeg("#333");
-//                     ctx.rotate(m.angle);
-//                     ctx.beginPath();
-//                     ctx.arc(0, 0, 30, 0, 2 * Math.PI);
-//                     ctx.fillStyle = m.bodyGradient
-//                     ctx.fill();
-//                     ctx.strokeStyle = "#333";
-//                     ctx.lineWidth = 2;
-//                     if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) ctx.scale(1, -1); //here is the flip
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(2, -6, 7, 0, 2 * Math.PI);
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(25, -6, 7, 0.25 * Math.PI, 1.6 * Math.PI);
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(2, -10, 9, 1.25 * Math.PI, 1.75 * Math.PI);
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(25, -10, 9, 1.25 * Math.PI, 1.4 * Math.PI);
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(18, 13, 10, 0, 2 * Math.PI);
-//                     ctx.fillStyle = m.bodyGradient;
-//                     ctx.fill();
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(18, 13, 6, 0, 2 * Math.PI);
-//                     ctx.fillStyle = "#555";
-//                     ctx.fill();
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(3, -6, 3, 0, 2 * Math.PI);
-//                     ctx.fill();
-//                     ctx.stroke();
-//                     ctx.beginPath();
-//                     ctx.arc(26, -6, 3, 0, 2 * Math.PI);
-//                     ctx.fill();
-//                     ctx.stroke();
-//                     ctx.restore();
-//                     m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15;
-//                 }
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "prism",
-//             description: "you cycle through different <strong>colors</strong>",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isSkin: true,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 m.color = {
-//                     hue: 0,
-//                     sat: 100,
-//                     light: 50
-//                 }
-//                 setInterval(function() {
-//                     m.color.hue++
-//                     m.setFillColors()
-//                 }, 10);
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "microtransactions",
-//             description: `when you choose a <strong class='color-m'>tech</strong> you can<br>use ${powerUps.orb.research(1)} to buy a free in game <strong>skin</strong>`,
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 tech.isMicroTransactions = true
-//             },
-//             remove() {
-//                 tech.isMicroTransactions = false
-//             }
-//         },
-//         {
-//             name: "ship",
-//             description: "fly around with no legs<br>reduce combat <strong>difficulty</strong> by <strong>1 level</strong>",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() {
-//                 return !m.isShipMode && m.fieldUpgrades[m.fieldMode].name !== "negative mass"
-//             },
-//             requires: "",
-//             effect() {
-//                 m.shipMode()
-//                 level.difficultyDecrease(simulation.difficultyMode)
-//                 //unlock relativistic rotation
-//                 for (let i = 0; i < tech.tech.length; i++) {
-//                     if (tech.tech[i].name === "relativistic rotation") tech.tech[i].frequency = 10
-//                 }
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "circular symmetry",
-//             description: "turning the ship rotates the universe instead<br><strong>+200%</strong> <strong class='color-d'>damage</strong>",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return m.isShipMode },
-//             requires: "",
-//             effect() {
-//                 tech.damage *= 2
+                    ctx.restore();
+                    m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15; //smoothly move leg height towards height goal
+                }
+            },
+            remove() {}
+        },
+        {
+            name: "transparency",
+            description: "become invisible to yourself<br><em>mobs can still see you</em>",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                m.draw = () => {}
+            },
+            remove() {}
+        },
+        {
+            name: "posture",
+            description: "stand a bit taller",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isJunk: true,
+            allowed() {
+                return !m.isShipMode
+            },
+            requires: "",
+            effect() {
+                m.yOffWhen.stand = 70
+            },
+            remove() {
+                m.yOffWhen.stand = 49
+            }
+        },
+        {
+            name: "rhythm",
+            description: "you oscillate up and down",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isJunk: true,
+            isNonRefundable: true,
+            allowed() {
+                return !m.isShipMode
+            },
+            requires: "",
+            effect() {
+                setInterval(() => {
+                    m.yOffWhen.stand = 53 + 28 * Math.sin(simulation.cycle * 0.2)
+                    if (m.onGround && !m.crouch) m.yOffGoal = m.yOffWhen.stand
+                }, 100);
+            },
+            remove() {}
+        },
+        {
+            name: "pareidolia",
+            description: "don't",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() {
+                return !m.isShipMode
+            },
+            requires: "",
+            effect() {
+                m.draw = function() {
+                    ctx.fillStyle = m.fillColor;
+                    m.walk_cycle += m.flipLegs * m.Vx;
+                    ctx.save();
+                    ctx.globalAlpha = (m.immuneCycle < m.cycle) ? 1 : 0.7
+                    ctx.translate(m.pos.x, m.pos.y);
+                    m.calcLeg(Math.PI, -3);
+                    m.drawLeg("#4a4a4a");
+                    m.calcLeg(0, 0);
+                    m.drawLeg("#333");
+                    ctx.rotate(m.angle);
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 30, 0, 2 * Math.PI);
+                    ctx.fillStyle = m.bodyGradient
+                    ctx.fill();
+                    ctx.strokeStyle = "#333";
+                    ctx.lineWidth = 2;
+                    if (!(m.angle > -Math.PI / 2 && m.angle < Math.PI / 2)) ctx.scale(1, -1); //here is the flip
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(2, -6, 7, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(25, -6, 7, 0.25 * Math.PI, 1.6 * Math.PI);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(2, -10, 9, 1.25 * Math.PI, 1.75 * Math.PI);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(25, -10, 9, 1.25 * Math.PI, 1.4 * Math.PI);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(18, 13, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = m.bodyGradient;
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(18, 13, 6, 0, 2 * Math.PI);
+                    ctx.fillStyle = "#555";
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(3, -6, 3, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(26, -6, 3, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.restore();
+                    m.yOff = m.yOff * 0.85 + m.yOffGoal * 0.15;
+                }
+            },
+            remove() {}
+        },
+        {
+            name: "prism",
+            description: "you cycle through different <strong>colors</strong>",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isSkin: true,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                m.color = {
+                    hue: 0,
+                    sat: 100,
+                    light: 50
+                }
+                setInterval(function() {
+                    m.color.hue++
+                    m.setFillColors()
+                }, 10);
+            },
+            remove() {}
+        },
+        {
+            name: "microtransactions",
+            description: `when you choose a <strong class='color-m'>tech</strong> you can<br>use ${powerUps.orb.research(1)} to buy a free in game <strong>skin</strong>`,
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                tech.isMicroTransactions = true
+            },
+            remove() {
+                tech.isMicroTransactions = false
+            }
+        },
+        {
+            name: "ship",
+            description: "fly around with no legs<br>reduce combat <strong>difficulty</strong> by <strong>1 level</strong>",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() {
+                return !m.isShipMode && m.fieldUpgrades[m.fieldMode].name !== "negative mass"
+            },
+            requires: "",
+            effect() {
+                m.shipMode()
+                level.difficultyDecrease(simulation.difficultyMode)
+                //unlock relativistic rotation
+                for (let i = 0; i < tech.tech.length; i++) {
+                    if (tech.tech[i].name === "relativistic rotation") tech.tech[i].frequency = 10
+                }
+            },
+            remove() {}
+        },
+        {
+            name: "circular symmetry",
+            description: "turning the ship rotates the universe instead<br><strong>+200%</strong> <strong class='color-d'>damage</strong>",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return m.isShipMode },
+            requires: "",
+            effect() {
+                tech.damage *= 2
 
-//                 m.look = () => {
-//                     // const scale = 0;
-//                     m.transSmoothX = canvas.width2 - m.pos.x // - (simulation.mouse.x - canvas.width2) * scale;
-//                     m.transSmoothY = canvas.height2 - m.pos.y // - (simulation.mouse.y - canvas.height2) * scale;
-//                     m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
-//                     m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
-//                     ctx.restore();
-//                     ctx.save();
-//                     ctx.translate(canvas.width2, canvas.height2); //center
-//                     ctx.rotate(-m.angle)
-//                     ctx.translate(-canvas.width2, -canvas.height2); //center
-//                 }
-//             },
-//             remove() {}
-//         },
+                m.look = () => {
+                    // const scale = 0;
+                    m.transSmoothX = canvas.width2 - m.pos.x // - (simulation.mouse.x - canvas.width2) * scale;
+                    m.transSmoothY = canvas.height2 - m.pos.y // - (simulation.mouse.y - canvas.height2) * scale;
+                    m.transX += (m.transSmoothX - m.transX) * m.lookSmoothing;
+                    m.transY += (m.transSmoothY - m.transY) * m.lookSmoothing;
+                    ctx.restore();
+                    ctx.save();
+                    ctx.translate(canvas.width2, canvas.height2); //center
+                    ctx.rotate(-m.angle)
+                    ctx.translate(-canvas.width2, -canvas.height2); //center
+                }
+            },
+            remove() {}
+        },
         {
             name: "assimilation",
             description: "all your <strong class='color-bot'>bots</strong> are converted to the <strong>same</strong> random model",
@@ -10257,197 +10257,197 @@ const tech = {
             },
             remove() {}
         },
-//         {
-//             name: "rule 30",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return !build.isExperimentSelection },
-//             requires: "NOT EXPERIMENT MODE",
-//             effect() {},
-//             remove() {},
-//             state: [
-//                 [false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false, false, true, false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, Math.random() > 0.8, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false, false]
-//             ],
-//             rule(state, a, b, c) {
-//                 //30
-//                 if (state[a] && state[b] && state[c]) return false; // TTT => F
-//                 if (state[a] && state[b] && !state[c]) return false; // TTF => F
-//                 if (state[a] && !state[b] && state[c]) return false; //TFT => F 
-//                 if (state[a] && !state[b] && !state[c]) return true; //TFF => T
-//                 if (!state[a] && state[b] && state[c]) return true; //FTT => T
-//                 if (!state[a] && state[b] && !state[c]) return true; //FTF => T
-//                 if (!state[a] && !state[b] && state[c]) return true; //FFT => T
-//                 if (!state[a] && !state[b] && !state[c]) return false; //FFF => F
-//             },
-//             id: 0,
-//             researchSpawned: 0,
-//             descriptionFunction() {
-//                 const loop = () => {
-//                     if ((simulation.paused || simulation.isChoosing) && m.alive && !build.isExperimentSelection) { //&& (!simulation.isChoosing || this.count === 0)
-//                         let b = []; //produce next row
-//                         b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 1, 0, 1)); //left edge wrap around
-//                         for (let i = 1; i < this.state[this.state.length - 1].length - 1; i++) { //apply rule to the rest of the array
-//                             b.push(this.rule(this.state[this.state.length - 1], i - 1, i, i + 1));
-//                         }
-//                         b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 2, this.state[this.state.length - 1].length - 1, 0)); //right edge wrap around
-//                         this.state.push(b)
-//                         if (document.getElementById(`cellular-rule-id${this.id}`)) document.getElementById(`cellular-rule-id${this.id}`).innerHTML = this.outputText() //convert to squares and send HTML
-//                         if (this.count && this.researchSpawned < 12 && !(this.state.length % 10)) {
-//                             this.researchSpawned++
-//                             powerUps.spawn(m.pos.x - 50 + 100 * (Math.random() - 0.5), m.pos.y + 100 * (Math.random() - 0.5), "research");
-//                         }
-//                         setTimeout(() => { loop() }, 300);
-//                     }
-//                 }
-//                 setTimeout(() => { loop() }, 300);
-//                 this.id++
-//                 return `<span id = "cellular-rule-id${this.id}" style = "letter-spacing: -0.5px;font-size: 100%;line-height: normal;font-family: 'Courier New', monospace;">${this.outputText()}</span>`
-//             },
-//             outputText() {
-//                 let text = "<pre>"
-//                 for (let j = 0; j < this.state.length; j++) {
-//                     // text += "<p style = 'margin-bottom: -12px;'>"
-//                     text += "<p style = 'margin-top: -7px;margin-bottom: -7px;'>"
-//                     for (let i = 0; i < this.state[j].length; i++) {
-//                         if (this.state[j][i]) {
-//                             text += "■" //"☻" //"⬛" //"█" //"■"
-//                         } else {
-//                             text += " " //"□" //"☺" //"⬜" //"&nbsp;&nbsp;&nbsp;&nbsp;" //"□"
-//                         }
-//                     }
-//                     text += "</p>"
-//                 }
-//                 text += "</pre>"
-//                 return text
-//             },
-//         },
-//         {
-//             name: "rule 90",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             allowed() { return !build.isExperimentSelection },
-//             requires: "NOT EXPERIMENT MODE",
-//             effect() {},
-//             remove() {},
-//             state: [
-//                 [false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false, false, true, true, false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, Math.random() > 0.8, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false]
-//             ],
-//             rule(state, a, b, c) { //90
-//                 if (state[a] && state[b] && state[c]) return false; // TTT => F
-//                 if (state[a] && state[b] && !state[c]) return true; // TTF => T
-//                 if (state[a] && !state[b] && state[c]) return false; //TFT => F 
-//                 if (state[a] && !state[b] && !state[c]) return true; //TFF => T
-//                 if (!state[a] && state[b] && state[c]) return true; //FTT => T
-//                 if (!state[a] && state[b] && !state[c]) return false; //FTF => F
-//                 if (!state[a] && !state[b] && state[c]) return true; //FFT => T
-//                 if (!state[a] && !state[b] && !state[c]) return false; //FFF => F
-//             },
-//             id: 90,
-//             researchSpawned: 0,
-//             descriptionFunction() {
-//                 const loop = () => {
-//                     if ((simulation.paused || simulation.isChoosing) && m.alive && !build.isExperimentSelection) { //&& (!simulation.isChoosing || this.count === 0)
-//                         let b = []; //produce next row
-//                         b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 1, 0, 1)); //left edge wrap around
-//                         for (let i = 1; i < this.state[this.state.length - 1].length - 1; i++) { //apply rule to the rest of the array
-//                             b.push(this.rule(this.state[this.state.length - 1], i - 1, i, i + 1));
-//                         }
-//                         b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 2, this.state[this.state.length - 1].length - 1, 0)); //right edge wrap around
-//                         this.state.push(b)
-//                         if (document.getElementById(`cellular-rule-id${this.id}`)) document.getElementById(`cellular-rule-id${this.id}`).innerHTML = this.outputText() //convert to squares and send HTML
-//                         if (this.count && this.researchSpawned < 12 && !(this.state.length % 10)) {
-//                             this.researchSpawned++
-//                             powerUps.spawn(m.pos.x - 50 + 100 * (Math.random() - 0.5), m.pos.y + 100 * (Math.random() - 0.5), "research");
-//                         }
-//                         setTimeout(() => { loop() }, 300);
-//                     }
-//                 }
-//                 setTimeout(() => { loop() }, 300);
-//                 this.id++
-//                 return `<span id = "cellular-rule-id${this.id}" style = "letter-spacing: -0.5px;font-size: 100%;line-height: normal;font-family: 'Courier New', monospace;">${this.outputText()}</span>`
-//             },
-//             outputText() {
-//                 let text = "<pre>"
-//                 for (let j = 0; j < this.state.length; j++) {
-//                     // text += "<p style = 'margin-bottom: -12px;'>"
-//                     text += "<p style = 'margin-top: -7px;margin-bottom: -7px;'>"
-//                     for (let i = 0; i < this.state[j].length; i++) {
-//                         if (this.state[j][i]) {
-//                             text += "■" //"☻" //"⬛" //"█" //"■"
-//                         } else {
-//                             text += " " //"□" //"☺" //"⬜" //"&nbsp;&nbsp;&nbsp;&nbsp;" //"□"
-//                         }
-//                     }
-//                     text += "</p>"
-//                 }
-//                 text += "</pre>"
-//                 return text
-//             },
-//         },
-//         {
-//             name: "cosmogonic myth",
-//             description: `<span style = "opacity: 9%;">open a portal to a primordial version of reality<br>in 5 minutes close the portal, spawn 1 of each power up</span>`,
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 const urls = ["https://scratch.mit.edu/projects/14005697/fullscreen/", "https://scratch.mit.edu/projects/22573757/fullscreen/", "https://scratch.mit.edu/projects/41429974/fullscreen/", "https://scratch.mit.edu/projects/43690666/fullscreen/", "https://codepen.io/lilgreenland/full/ozXNWZ", "https://codepen.io/lilgreenland/full/wzARJY", "classic/7-1-2017/", "classic/4-15-2018/", "classic/7-11-2019/", "classic/9-8-2019/", "classic/7-15-2020/", "classic/6-1-2021/"]
-//                 const choose = urls[Math.floor(Math.random() * urls.length)]
-//                 console.log(`opening new tab" ${choose}`)
-//                 let tab = window.open(choose, "_blank");
-//                 setTimeout(() => {
-//                     tab.close();
-//                     powerUps.spawn(m.pos.x, m.pos.y, "gun");
-//                     setTimeout(() => { powerUps.spawn(m.pos.x, m.pos.y - 50, "ammo") }, 250);
-//                     setTimeout(() => { powerUps.spawn(m.pos.x + 50, m.pos.y, "field"); }, 500);
-//                     setTimeout(() => { powerUps.spawn(m.pos.x + 50, m.pos.y - 50, "heal"); }, 750);
-//                     setTimeout(() => { powerUps.spawn(m.pos.x - 50, m.pos.y, "tech"); }, 1000);
-//                     setTimeout(() => { powerUps.spawn(m.pos.x - 50, m.pos.y - 50, "research"); }, 1250);
-//                 }, 1000 * 5 * 60);
-//             },
-//             remove() {}
-//         },
-//         {
-//             name: "planetesimals",
-//             description: `play <strong>planetesimals</strong> <em style = 'font-size:80%;'>(an asteroids-like game)</em><br>clear <strong>levels</strong> in <strong>planetesimals</strong> to spawn <strong class='color-m'>tech</strong><br>if you <strong style="color:red;">die</strong> in <strong>planetesimals</strong> you <strong style="color:red;">die</strong> in <strong>n-gon</strong>`,
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 window.open('../../planetesimals/index.html', '_blank')
-//                 // powerUps.spawn(m.pos.x, m.pos.y, "tech");
+        {
+            name: "rule 30",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return !build.isExperimentSelection },
+            requires: "NOT EXPERIMENT MODE",
+            effect() {},
+            remove() {},
+            state: [
+                [false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false, false, true, false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, Math.random() > 0.8, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false, false]
+            ],
+            rule(state, a, b, c) {
+                //30
+                if (state[a] && state[b] && state[c]) return false; // TTT => F
+                if (state[a] && state[b] && !state[c]) return false; // TTF => F
+                if (state[a] && !state[b] && state[c]) return false; //TFT => F 
+                if (state[a] && !state[b] && !state[c]) return true; //TFF => T
+                if (!state[a] && state[b] && state[c]) return true; //FTT => T
+                if (!state[a] && state[b] && !state[c]) return true; //FTF => T
+                if (!state[a] && !state[b] && state[c]) return true; //FFT => T
+                if (!state[a] && !state[b] && !state[c]) return false; //FFF => F
+            },
+            id: 0,
+            researchSpawned: 0,
+            descriptionFunction() {
+                const loop = () => {
+                    if ((simulation.paused || simulation.isChoosing) && m.alive && !build.isExperimentSelection) { //&& (!simulation.isChoosing || this.count === 0)
+                        let b = []; //produce next row
+                        b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 1, 0, 1)); //left edge wrap around
+                        for (let i = 1; i < this.state[this.state.length - 1].length - 1; i++) { //apply rule to the rest of the array
+                            b.push(this.rule(this.state[this.state.length - 1], i - 1, i, i + 1));
+                        }
+                        b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 2, this.state[this.state.length - 1].length - 1, 0)); //right edge wrap around
+                        this.state.push(b)
+                        if (document.getElementById(`cellular-rule-id${this.id}`)) document.getElementById(`cellular-rule-id${this.id}`).innerHTML = this.outputText() //convert to squares and send HTML
+                        if (this.count && this.researchSpawned < 12 && !(this.state.length % 10)) {
+                            this.researchSpawned++
+                            powerUps.spawn(m.pos.x - 50 + 100 * (Math.random() - 0.5), m.pos.y + 100 * (Math.random() - 0.5), "research");
+                        }
+                        setTimeout(() => { loop() }, 300);
+                    }
+                }
+                setTimeout(() => { loop() }, 300);
+                this.id++
+                return `<span id = "cellular-rule-id${this.id}" style = "letter-spacing: -0.5px;font-size: 100%;line-height: normal;font-family: 'Courier New', monospace;">${this.outputText()}</span>`
+            },
+            outputText() {
+                let text = "<pre>"
+                for (let j = 0; j < this.state.length; j++) {
+                    // text += "<p style = 'margin-bottom: -12px;'>"
+                    text += "<p style = 'margin-top: -7px;margin-bottom: -7px;'>"
+                    for (let i = 0; i < this.state[j].length; i++) {
+                        if (this.state[j][i]) {
+                            text += "■" //"☻" //"⬛" //"█" //"■"
+                        } else {
+                            text += " " //"□" //"☺" //"⬜" //"&nbsp;&nbsp;&nbsp;&nbsp;" //"□"
+                        }
+                    }
+                    text += "</p>"
+                }
+                text += "</pre>"
+                return text
+            },
+        },
+        {
+            name: "rule 90",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            allowed() { return !build.isExperimentSelection },
+            requires: "NOT EXPERIMENT MODE",
+            effect() {},
+            remove() {},
+            state: [
+                [false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false, false, true, true, false, false, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, Math.random() > 0.8, false, Math.random() > 0.8, false, false, false, Math.random() > 0.8, false, false, false, false, false, false, false, false]
+            ],
+            rule(state, a, b, c) { //90
+                if (state[a] && state[b] && state[c]) return false; // TTT => F
+                if (state[a] && state[b] && !state[c]) return true; // TTF => T
+                if (state[a] && !state[b] && state[c]) return false; //TFT => F 
+                if (state[a] && !state[b] && !state[c]) return true; //TFF => T
+                if (!state[a] && state[b] && state[c]) return true; //FTT => T
+                if (!state[a] && state[b] && !state[c]) return false; //FTF => F
+                if (!state[a] && !state[b] && state[c]) return true; //FFT => T
+                if (!state[a] && !state[b] && !state[c]) return false; //FFF => F
+            },
+            id: 90,
+            researchSpawned: 0,
+            descriptionFunction() {
+                const loop = () => {
+                    if ((simulation.paused || simulation.isChoosing) && m.alive && !build.isExperimentSelection) { //&& (!simulation.isChoosing || this.count === 0)
+                        let b = []; //produce next row
+                        b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 1, 0, 1)); //left edge wrap around
+                        for (let i = 1; i < this.state[this.state.length - 1].length - 1; i++) { //apply rule to the rest of the array
+                            b.push(this.rule(this.state[this.state.length - 1], i - 1, i, i + 1));
+                        }
+                        b.push(this.rule(this.state[this.state.length - 1], this.state[this.state.length - 1].length - 2, this.state[this.state.length - 1].length - 1, 0)); //right edge wrap around
+                        this.state.push(b)
+                        if (document.getElementById(`cellular-rule-id${this.id}`)) document.getElementById(`cellular-rule-id${this.id}`).innerHTML = this.outputText() //convert to squares and send HTML
+                        if (this.count && this.researchSpawned < 12 && !(this.state.length % 10)) {
+                            this.researchSpawned++
+                            powerUps.spawn(m.pos.x - 50 + 100 * (Math.random() - 0.5), m.pos.y + 100 * (Math.random() - 0.5), "research");
+                        }
+                        setTimeout(() => { loop() }, 300);
+                    }
+                }
+                setTimeout(() => { loop() }, 300);
+                this.id++
+                return `<span id = "cellular-rule-id${this.id}" style = "letter-spacing: -0.5px;font-size: 100%;line-height: normal;font-family: 'Courier New', monospace;">${this.outputText()}</span>`
+            },
+            outputText() {
+                let text = "<pre>"
+                for (let j = 0; j < this.state.length; j++) {
+                    // text += "<p style = 'margin-bottom: -12px;'>"
+                    text += "<p style = 'margin-top: -7px;margin-bottom: -7px;'>"
+                    for (let i = 0; i < this.state[j].length; i++) {
+                        if (this.state[j][i]) {
+                            text += "■" //"☻" //"⬛" //"█" //"■"
+                        } else {
+                            text += " " //"□" //"☺" //"⬜" //"&nbsp;&nbsp;&nbsp;&nbsp;" //"□"
+                        }
+                    }
+                    text += "</p>"
+                }
+                text += "</pre>"
+                return text
+            },
+        },
+        {
+            name: "cosmogonic myth",
+            description: `<span style = "opacity: 9%;">open a portal to a primordial version of reality<br>in 5 minutes close the portal, spawn 1 of each power up</span>`,
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                const urls = ["https://scratch.mit.edu/projects/14005697/fullscreen/", "https://scratch.mit.edu/projects/22573757/fullscreen/", "https://scratch.mit.edu/projects/41429974/fullscreen/", "https://scratch.mit.edu/projects/43690666/fullscreen/", "https://codepen.io/lilgreenland/full/ozXNWZ", "https://codepen.io/lilgreenland/full/wzARJY", "classic/7-1-2017/", "classic/4-15-2018/", "classic/7-11-2019/", "classic/9-8-2019/", "classic/7-15-2020/", "classic/6-1-2021/"]
+                const choose = urls[Math.floor(Math.random() * urls.length)]
+                console.log(`opening new tab" ${choose}`)
+                let tab = window.open(choose, "_blank");
+                setTimeout(() => {
+                    tab.close();
+                    powerUps.spawn(m.pos.x, m.pos.y, "gun");
+                    setTimeout(() => { powerUps.spawn(m.pos.x, m.pos.y - 50, "ammo") }, 250);
+                    setTimeout(() => { powerUps.spawn(m.pos.x + 50, m.pos.y, "field"); }, 500);
+                    setTimeout(() => { powerUps.spawn(m.pos.x + 50, m.pos.y - 50, "heal"); }, 750);
+                    setTimeout(() => { powerUps.spawn(m.pos.x - 50, m.pos.y, "tech"); }, 1000);
+                    setTimeout(() => { powerUps.spawn(m.pos.x - 50, m.pos.y - 50, "research"); }, 1250);
+                }, 1000 * 5 * 60);
+            },
+            remove() {}
+        },
+        {
+            name: "planetesimals",
+            description: `play <strong>planetesimals</strong> <em style = 'font-size:80%;'>(an asteroids-like game)</em><br>clear <strong>levels</strong> in <strong>planetesimals</strong> to spawn <strong class='color-m'>tech</strong><br>if you <strong style="color:red;">die</strong> in <strong>planetesimals</strong> you <strong style="color:red;">die</strong> in <strong>n-gon 2.0</strong>`,
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                window.open('../../planetesimals/index.html', '_blank')
+                // powerUps.spawn(m.pos.x, m.pos.y, "tech");
 
-//                 // for communicating to other tabs, like planetesimals
-//                 // Connection to a broadcast channel
-//                 const bc = new BroadcastChannel('planetesimals');
-//                 bc.activated = false
+                // for communicating to other tabs, like planetesimals
+                // Connection to a broadcast channel
+                const bc = new BroadcastChannel('planetesimals');
+                bc.activated = false
 
-//                 bc.onmessage = function(ev) {
-//                     if (ev.data === 'tech') powerUps.directSpawn(m.pos.x, m.pos.y, "tech");
-//                     if (ev.data === 'death') {
-//                         m.death()
-//                         bc.close(); //end session
-//                     }
-//                     if (ev.data === 'ready' && !bc.activated) {
-//                         bc.activated = true //prevents n-gon from activating multiple copies of planetesimals
-//                         bc.postMessage("activate");
-//                     }
-//                 }
-//             },
-//             remove() {}
-//         },
+                bc.onmessage = function(ev) {
+                    if (ev.data === 'tech') powerUps.directSpawn(m.pos.x, m.pos.y, "tech");
+                    if (ev.data === 'death') {
+                        m.death()
+                        bc.close(); //end session
+                    }
+                    if (ev.data === 'ready' && !bc.activated) {
+                        bc.activated = true //prevents n-gon from activating multiple copies of planetesimals
+                        bc.postMessage("activate");
+                    }
+                }
+            },
+            remove() {}
+        },
         {
             name: "tinker",
             description: "<strong>permanently</strong> unlock <strong class='color-j'>JUNK</strong><strong class='color-m'>tech</strong> in experiment mode<br><em>this effect is stored for future visits</em>",
@@ -10467,22 +10467,22 @@ const tech = {
             },
             remove() {}
         },
-//         {
-//             name: "NFT",
-//             descriptionFunction() { return `buy your current game seed: <strong style = 'font-size:120%;'>${Math.initialSeed}</strong><br><em>no one is allowed to use your seeds<br>if they use them they are gonna get in trouble</em><br>your seeds: <span style = 'font-size:80%;'>${localSettings.personalSeeds.join(", ")}</span>` },
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isJunk: true,
-//             isNonRefundable: true,
-//             allowed: () => true,
-//             requires: "",
-//             effect() {
-//                 localSettings.personalSeeds.push(Math.initialSeed)
-//                 if (localSettings.isAllowed) localStorage.setItem("localSettings", JSON.stringify(localSettings)); //update local storage
-//             },
-//             remove() {}
-//         },
+        {
+            name: "NFT",
+            descriptionFunction() { return `buy your current game seed: <strong style = 'font-size:120%;'>${Math.initialSeed}</strong><br><em>no one is allowed to use your seeds<br>if they use them they are gonna get in trouble</em><br>your seeds: <span style = 'font-size:80%;'>${localSettings.personalSeeds.join(", ")}</span>` },
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isJunk: true,
+            isNonRefundable: true,
+            allowed: () => true,
+            requires: "",
+            effect() {
+                localSettings.personalSeeds.push(Math.initialSeed)
+                if (localSettings.isAllowed) localStorage.setItem("localSettings", JSON.stringify(localSettings)); //update local storage
+            },
+            remove() {}
+        },
         // {
         //     name: "rule 90",
         //     maxCount: 1,
@@ -10554,7 +10554,7 @@ const tech = {
         //************************************************** 
         {
             name: `undefined`,
-            description: `<strong class="">A placeholder for unassigned variables</strong>`,
+            description: `<strong class="lore-text">this</strong>`,
             maxCount: 1,
             count: 0,
             frequency: 2,
@@ -10562,7 +10562,7 @@ const tech = {
             isLore: true,
             // isExperimentHide: true,
             allowed() { return !build.isExperimentSelection },
-//             requires: "NOT EXPERIMENT MODE",
+            requires: "NOT EXPERIMENT MODE",
             effect() {
                 if (localSettings.loreCount > lore.conversation.length - 1) { //reward for people done with lore chapters (or on the final chapter)
                     for (let i = mob.length - 1; i > -1; i--) { //replace mobs with starters
@@ -10608,7 +10608,7 @@ const tech = {
             remove() {
                 lore.techCount = 0;
                 this.maxCount = lore.techGoal;
-                this.description = `<strong class="lore-text">A placeholder for unassigned variables</strong>`
+                this.description = `<strong class="lore-text">this</strong>`
             }
         }
     ],
