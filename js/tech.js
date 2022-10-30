@@ -9302,7 +9302,7 @@ const tech = {
         },
         {
             name: "score",
-            description: "Add a score to n-gon 2.0!",
+            description: "Add a score to n-gon!",
             maxCount: 1,
             count: 0,
             frequency: 0,
@@ -9318,26 +9318,26 @@ const tech = {
             },
             remove() {}
         },
-//         {
-//             name: "pop-ups",
-//             description: "sign up to learn endless easy ways to win n-gon 2.0<br>that Landgreen doesn't want you to know!!!1!!",
-//             maxCount: 1,
-//             count: 0,
-//             frequency: 0,
-//             isNonRefundable: true,
-//             isJunk: true,
-//             allowed() { return true },
-//             requires: "",
-//             effect() {
-//                 setInterval(() => {
-//                     alert(`The best combo is ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name} with ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name}!`);
-//                 }, 30000); //every 30 seconds
-//             },
-//             remove() {}
-//         },
+        {
+            name: "pop-ups",
+            description: "sign up to learn endless easy ways to win n-gon<br>that Landgreen doesn't want you to know!!!1!!",
+            maxCount: 1,
+            count: 0,
+            frequency: 0,
+            isNonRefundable: true,
+            isJunk: true,
+            allowed() { return true },
+            requires: "",
+            effect() {
+                setInterval(() => {
+                    alert(`The best combo is ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name} with ${tech.tech[Math.floor(Math.random() * tech.tech.length)].name}!`);
+                }, 30000); //every 30 seconds
+            },
+            remove() {}
+        },
         {
             name: "music",
-            description: "add music to n-gon 2.0",
+            description: "add music to n-gon",
             maxCount: 1,
             count: 0,
             frequency: 0,
@@ -9352,7 +9352,7 @@ const tech = {
         },
         {
             name: "performance",
-            description: "display performance stats to n-gon 2.0",
+            description: "display performance stats to n-gon",
             maxCount: 1,
             count: 0,
             frequency: 0,
@@ -10417,7 +10417,7 @@ const tech = {
         },
         {
             name: "planetesimals",
-            description: `play <strong>planetesimals</strong> <em style = 'font-size:80%;'>(an asteroids-like game)</em><br>clear <strong>levels</strong> in <strong>planetesimals</strong> to spawn <strong class='color-m'>tech</strong><br>if you <strong style="color:red;">die</strong> in <strong>planetesimals</strong> you <strong style="color:red;">die</strong> in <strong>n-gon 2.0</strong>`,
+            description: `play <strong>planetesimals</strong> <em style = 'font-size:80%;'>(an asteroids-like game)</em><br>clear <strong>levels</strong> in <strong>planetesimals</strong> to spawn <strong class='color-m'>tech</strong><br>if you <strong style="color:red;">die</strong> in <strong>planetesimals</strong> you <strong style="color:red;">die</strong> in <strong>n-gon</strong>`,
             maxCount: 1,
             count: 0,
             frequency: 0,
