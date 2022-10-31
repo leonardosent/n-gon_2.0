@@ -6,12 +6,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Browser-based side scrolling video game with the matter.js physics engine.">
-    <meta name="author" content="Leonardo Sent">
+    <meta name="author" content="Ross Landgreen">
     <meta property="og:description" content="Browser-based side scrolling video game with the matter.js physics engine.">
     <meta property="og:title" content="n-gon 2.0">
     <meta name="twitter:title" content="n-gon 2.0">
     <meta name="twitter:description" content="Browser-based side scrolling video game with the matter.js physics engine.">
-    <title>n-gon</title>
+    <title>n-gon 2.0</title>
     <link rel="stylesheet" href="style.css">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
 </head>
@@ -36,50 +36,47 @@
     <div style="position: absolute; top:0;right:0;">
         <div id="pause-grid-right" class="pause-grid"></div>
     </div>
-    <svg class="SVG-button" id="experiment-button" width="270" height="45" style="border: 2px #333 solid;">
+    <svg class="SVG-button" id="experiment-button" width="170" height="45" style="border: 2px #333 solid;">
         <g stroke='none' fill='#333' stroke-width="2" font-size="30px" font-family="Arial, sans-serif">
-            <text x="10" y="33">Experimental Mode</text>
+            <text x="10" y="33">experiment</text>
         </g>
     </svg>
     <svg class="SVG-button" id="training-button" width="120" height="45" style="border: 2px #333 solid;" stroke='none' fill='#333' font-size="30px" font-family="Arial, sans-serif" onclick="simulation.startGame(false, true)">
-        <text x="10" y="33">Tutorial</text>
+        <text x="10" y="33">training</text>
     </svg>
     <div id='info'>
         <div id="settings">
             <details>
-                <summary>Settings</summary>
+                <summary>settings</summary>
                 <div style="line-height: 150%;" class="details-div">
-                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">Combat difficulty:</label>
+                    <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">combat difficulty:</label>
                     <select name="difficulty-select" id="difficulty-select" style="background-color: #fff">
-                        <option value="0">Peaceful</option>
-                        <option value="1">Easy</option>
-                        <option value="2" selected>Normal</option>
-                        <option value="4">Hard</option>
-                        <option value="10">Impossible</option>
+                        <option value="1">easy</option>
+                        <option value="2" selected>normal</option>
+                        <option value="4">hard</option>
+                        <option value="6">why?</option>
                     </select>
                     <br>
-                    <label for="fps-select" title="Use this to slow the game down">Limit frames per second:</label>
+                    <label for="fps-select" title="use this to slow the game down">limit frames per second:</label>
                     <select name="fps-select" id="fps-select">
-                        <option value="max" selected>No limit</option>
-                        <option value="90">90 fps</option>
+                        <option value="max" selected>no cap</option>
                         <option value="72">72 fps</option>
                         <option value="60">60 fps</option>
                         <option value="45">45 fps</option>
                         <option value="30">30 fps</option>
-                        <option value="15">15 fps</option>
                     </select>
                     <br>
                     <label for="seed" title="the randoms seed determines level order, tech choices, and mob types">randomization seed:</label>
                     <input type="text" id="seed" name="seed" autocomplete="off" spellcheck="false" minlength="1" style="width: 120px;">
                     <br>
                     <span id="previous-seed" style="color:#bbb"></span>
-<!--                     <label for="community-maps" title="add about 12 player made levels the random n-gon level pool">include community maps:</label>
-                    <input type="checkbox" id="community-maps" name="community-maps" style="width:17px; height:17px;"> -->
+                    <label for="community-maps" title="add about 12 player made levels the random n-gon level pool">include community maps:</label>
+                    <input type="checkbox" id="community-maps" name="community-maps" style="width:17px; height:17px;">
                     <!-- <br>
 					<label for="body-damage" title="allow damage from the ground and large fast moving blocks">collision damage from blocks:</label>
 					<input type="checkbox" id="body-damage" name="body-damage" checked style="width:17px; height:17px;"> -->
                     <br>
-                    <label for="banned" title="Type banned levels with a space between them.  Example:  sattellite, pavilion">Banned levels:</label>
+                    <label for="banned" title="type banned levels with a space between them.  Example:  run temple biohazard">banned levels:</label>
                     <input list="ban-suggest" id="banned" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="false" style="width: 182px;" />
                     <datalist id="ban-suggest">
                         <option value="testChamber">
@@ -93,7 +90,7 @@
                         <option value="rooftops">
                         <option value="pavilion">
                         <option value="labs">
-<!--                         <option value="______">
+                        <option value="______">
                         <option value="biohazard">
                         <option value="islands">
                         <option value="tunnel">
@@ -107,14 +104,14 @@
                         <option value="dripp">
                         <option value="crossfire">
                         <option value="temple">
-                        <option value="run"> -->
+                        <option value="run">
                     </datalist>
                     <!-- communityLevels: ["stronghold", "basement", "crossfire", "vats", "run", "n-gon", "house", "perplex", "coliseum", "tunnel", "islands", "temple", "dripp"], -->
                     <!-- playableLevels: ["labs", "rooftops", "skyscrapers", "warehouse", "highrise", "office", "aerie", "satellite", "sewers", "testChamber", "pavilion"], -->
 
                     <!--                <label for="banned">banned levels:</label>
                     <input type="text" id="ban-list" name="banned" placeholder="list levels by name" autocomplete="off" spellcheck="true" style="width: 183px;"> -->
-<!--                     <br>
+                    <br>
                     <label for="classic-select" title="play older versions of n-gon">classic n-gon:</label>
                     <select name="classic-select" id="classic-select" onChange="window.location.href=this.value">
                         <option value="https://scratch.mit.edu/projects/14005697/fullscreen/">mech: 2014</option>
@@ -130,7 +127,7 @@
                         <option value="classic/7-15-2020/">n-gon: summer-2020</option>
                         <option value="classic/6-1-2021/">n-gon: spring-2021</option>
                         <option value="" selected>current version</option>
-                    </select> -->
+                    </select>
                 </div>
             </details>
         </div>
