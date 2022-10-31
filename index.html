@@ -38,11 +38,11 @@
     </div>
     <svg class="SVG-button" id="experiment-button" width="170" height="45" style="border: 2px #333 solid;">
         <g stroke='none' fill='#333' stroke-width="2" font-size="30px" font-family="Arial, sans-serif">
-            <text x="10" y="33">experiment</text>
+            <text x="10" y="33">Experimental Mode</text>
         </g>
     </svg>
     <svg class="SVG-button" id="training-button" width="120" height="45" style="border: 2px #333 solid;" stroke='none' fill='#333' font-size="30px" font-family="Arial, sans-serif" onclick="simulation.startGame(false, true)">
-        <text x="10" y="33">training</text>
+        <text x="10" y="33">Tutorial</text>
     </svg>
     <div id='info'>
         <div id="settings">
@@ -51,15 +51,16 @@
                 <div style="line-height: 150%;" class="details-div">
                     <label for="difficulty-select" title="effects: number of mobs, damage done by mobs, damage done to mobs, mob speed, heal effects">combat difficulty:</label>
                     <select name="difficulty-select" id="difficulty-select" style="background-color: #fff">
-                        <option value="1">easy</option>
-                        <option value="2" selected>normal</option>
-                        <option value="4">hard</option>
-                        <option value="6">why?</option>
+                        <option value="0">Peaceful</option>
+                        <option value="1">Easy</option>
+                        <option value="2" selected>Normal</option>
+                        <option value="4">Hard</option>
+                        <option value="10">Impossible</option>
                     </select>
                     <br>
                     <label for="fps-select" title="use this to slow the game down">limit frames per second:</label>
                     <select name="fps-select" id="fps-select">
-                        <option value="max" selected>no cap</option>
+                        <option value="max" selected>No limit</option>
                         <option value="72">72 fps</option>
                         <option value="60">60 fps</option>
                         <option value="45">45 fps</option>
